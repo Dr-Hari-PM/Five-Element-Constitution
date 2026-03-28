@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Five Element Constitution Assessment</title>
+
+  <!-- Open Graph / WhatsApp Preview -->
+  <meta property="og:title" content="Five Element Constitution Assessment">
+  <meta property="og:description" content="Discover your Five Element Constitution through a guided interactive assessment designed by Dr. Hari P.M.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dr-hari-pm.github.io/Five-Element-Constitution/">
+  <meta property="og:image" content="https://dr-hari-pm.github.io/Five-Element-Constitution/thumbnail.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <style>
+    :root {
+      --bg1: #0f172a;
+      --bg2: #1e293b;
+      --panel: rgba(255,255,255,0.09);
+      --panel-strong: rgba(255,255,255,0.14);
+      --text: #eef2ff;
+      --muted: #cbd5e1;
+      --accent: #c6a76a;
+      --accent-2: #7dd3fc;
+      --wood: #5f9f6a;
+      --fire: #d96557;
+      --earth: #c7a15c;
+      --metal: #aeb7c4;
+      --water: #5378b7;
+      --shadow: 0 18px 45px rgba(0,0,0,0.28);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(125, 211, 252, 0.18), transparent 32%),
+        radial-gradient(circle at top right, rgba(198, 167, 106, 0.18), transparent 28%),
+        linear-gradient(140deg, var(--bg1), var(--bg2));
+      min-height: 100vh;
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 48px;
+    }
+
+    .screen {
+      display: none;
+      animation: fade 0.45s ease;
+    }
+
+    .screen.active { display: block; }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero {
+      min-height: calc(100vh - 76px);
+      display: grid;
+      align-items: center;
+    }
+
+    .hero-card, .panel {
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .hero-card {
+      padding: 44px;
+      display: grid;
+      gap: 24px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-card::before,
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(14px);
+      opacity: 0.24;
+      pointer-events: none;
+    }
+
+    .hero-card::before {
+      width: 240px;
+      height: 240px;
+      right: -40px;
+      top: -40px;
+      background: radial-gradient(circle, var(--accent), transparent 60%);
+    }
+
+    .hero-card::after {
+      width: 220px;
+      height: 220px;
+      left: -60px;
+      bottom: -70px;
+      background: radial-gradient(circle, var(--accent-2), transparent 60%);
+    }
+
+    .eyebrow {
+      color: #f8deb0;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 5vw, 4.3rem);
+      line-height: 1.02;
+      max-width: 11ch;
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      line-height: 1.8;
+      max-width: 62ch;
+    }
+
+    .elements {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0,1fr));
+      gap: 12px;
+    }
+
+    .chip {
+      padding: 14px 10px;
+      border-radius: 18px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.96rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .chip.wood { color: #d7f7dc; background: color-mix(in srgb, var(--wood) 34%, transparent); }
+    .chip.fire { color: #ffe1dc; background: color-mix(in srgb, var(--fire) 34%, transparent); }
+    .chip.earth { color: #fff1d3; background: color-mix(in srgb, var(--earth) 34%, transparent); }
+    .chip.metal { color: #f5f7fb; background: color-mix(in srgb, var(--metal) 34%, transparent); }
+    .chip.water { color: #dde8ff; background: color-mix(in srgb, var(--water) 34%, transparent); }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    button {
+      appearance: none;
+      border: 0;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 14px 24px;
+      font: inherit;
+      font-weight: 700;
+      transition: transform .18s ease, opacity .18s ease, box-shadow .18s ease;
+    }
+
+    button:hover { transform: translateY(-1px); }
+    button:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+    .btn-primary {
+      color: #0f172a;
+      background: linear-gradient(135deg, #f6d69a, #e4b768);
+      box-shadow: 0 10px 24px rgba(228,183,104,.26);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .mini-note {
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .panel {
+      padding: 28px;
+      margin-top: 18px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .title {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      margin: 0;
+    }
+
+    .subtitle {
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 18px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #f8fafc;
+    }
+
+    input {
+      width: 100%;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.08);
+      color: var(--text);
+      padding: 15px 16px;
+      font: inherit;
+      outline: none;
+      transition: border-color .18s ease, background .18s ease;
+    }
+
+    input::placeholder { color: #cdd6e4; }
+    input:focus {
+      border-color: rgba(246,214,154,.7);
+      background: rgba(255,255,255,.11);
+    }
+
+    .help {
+      margin-top: 16px;
+      color: #e7e7ea;
+      background: rgba(255,255,255,.06);
+      border-left: 4px solid var(--accent);
+      padding: 14px 16px;
+      border-radius: 18px;
+      line-height: 1.7;
+    }
+
+    .progress-wrap {
+      margin-bottom: 24px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: .95rem;
+      color: var(--muted);
+    }
+
+    .progress-bar {
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, #7dd3fc, #f6d69a);
+      border-radius: inherit;
+      transition: width .22s ease;
+    }
+
+    .question-card {
+      padding: 24px;
+      border-radius: 28px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.11);
+      margin-bottom: 18px;
+    }
+
+    .question-number {
+      color: #f6d69a;
+      font-size: .9rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .question-text {
+      font-size: clamp(1.2rem, 2.4vw, 1.65rem);
+      margin: 8px 0 18px;
+      line-height: 1.45;
+      max-width: 48ch;
+    }
+
+    .options {
+      display: grid;
+      gap: 12px;
+    }
+
+    .option {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.1);
+      cursor: pointer;
+      transition: background .18s ease, border-color .18s ease, transform .18s ease;
+    }
+
+    .option:hover {
+      background: rgba(255,255,255,.08);
+      transform: translateY(-1px);
+    }
+
+    .option input[type="radio"] {
+      width: 18px;
+      height: 18px;
+      margin: 0;
+      accent-color: #f6d69a;
+      flex: 0 0 auto;
+    }
+
+    .option span {
+      flex: 1;
+      line-height: 1.6;
+    }
+
+    .question-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+
+    .muted-center {
+      text-align: center;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .result-head {
+      display: grid;
+      gap: 14px;
+      text-align: center;
+      margin-bottom: 26px;
+    }
+
+    .big-result {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin: 0;
+      line-height: 1.08;
+    }
+
+    .tagline {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(246,214,154,.14);
+      color: #ffe6b7;
+      font-weight: 700;
+      font-size: .92rem;
+      justify-self: center;
+    }
+
+    .result-main-grid {
+      display: grid;
+      grid-template-columns: minmax(300px, 1.05fr) minmax(320px, .95fr);
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .chart-card, .card, .mini-card {
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 24px;
+      padding: 22px;
+      line-height: 1.8;
+    }
+
+    .chart-wrap {
+      position: relative;
+      min-height: 340px;
+    }
+
+    .score-bars {
+      display: grid;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .score-line {
+      display: grid;
+      grid-template-columns: 110px 1fr 62px;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .score-label {
+      font-weight: 700;
+    }
+
+    .bar {
+      height: 14px;
+      background: rgba(255,255,255,.08);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar > div {
+      height: 100%;
+      width: 0;
+      border-radius: inherit;
+      transition: width .7s ease;
+    }
+
+    .bar.wood > div { background: var(--wood); }
+    .bar.fire > div { background: var(--fire); }
+    .bar.earth > div { background: var(--earth); }
+    .bar.metal > div { background: var(--metal); }
+    .bar.water > div { background: var(--water); }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .mini-card {
+      text-align: center;
+      padding: 18px;
+    }
+
+    .mini-card strong {
+      display: block;
+      font-size: 1.45rem;
+      margin-top: 4px;
+    }
+
+    .card h3, .chart-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+    }
+
+    .card p, .mini-card p, .chart-card p { margin: 0; color: var(--muted); }
+
+    .list {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .list li { margin: 6px 0; }
+
+    .insight-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .insight-pill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.08);
+      color: #f8fafc;
+      font-size: .92rem;
+      cursor: default;
+    }
+
+    .hover-note {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      min-height: 76px;
+    }
+
+    .footer-note {
+      margin-top: 24px;
+      color: var(--muted);
+      text-align: center;
+      font-size: .93rem;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 980px) {
+      .elements, .grid-2, .result-main-grid, .results-grid, .mini-grid { grid-template-columns: 1fr; }
+      .hero-card { padding: 28px; }
+      .panel { padding: 20px; }
+      .score-line { grid-template-columns: 85px 1fr 52px; }
+      .chart-wrap { min-height: 300px; }
+    }
+  
+    .hero-credit{margin-top:12px;font-size:1rem;letter-spacing:0.04em;color:rgba(234,239,255,0.82);text-align:left;font-weight:500;}
+
+    .hero-note {
+      margin: 18px auto 0;
+      max-width: 720px;
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: rgba(226, 231, 245, 0.72);
+      text-align: center;
+    }
+
+  
+.hero{
+  padding: 56px 56px 50px;
+}
+.hero h1{
+  margin: 0 0 18px 0;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  animation: fadeSlideIn 1s ease-out both;
+}
+.hero-credit{
+  margin-top: 10px;
+  margin-bottom: 22px;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  color: rgba(234,239,255,0.82);
+  text-align: left;
+  font-weight: 500;
+  animation: fadeSlideIn 1.15s ease-out both;
+}
+.hero p{
+  max-width: 980px;
+  margin: 0 0 32px 0;
+  line-height: 1.75;
+  animation: fadeSlideIn 1.3s ease-out both;
+}
+.element-pills{
+  margin-top: 6px;
+  margin-bottom: 34px;
+}
+.element-pills > *{
+  animation: floatIn 0.85s ease-out both;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, filter 0.28s ease;
+}
+.element-pills > *:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.16);
+  filter: brightness(1.04);
+}
+.element-pills > *:nth-child(1){ animation-delay: 0.18s; }
+.element-pills > *:nth-child(2){ animation-delay: 0.28s; }
+.element-pills > *:nth-child(3){ animation-delay: 0.38s; }
+.element-pills > *:nth-child(4){ animation-delay: 0.48s; }
+.element-pills > *:nth-child(5){ animation-delay: 0.58s; }
+
+.hero .cta, .hero button, .hero .start-button, .hero a.button, .hero a.cta{
+  margin-top: 8px;
+  animation: fadeSlideIn 1.45s ease-out both;
+}
+.hero .subtle-text, .hero small, .hero .caption{
+  display: block;
+  margin-top: 18px;
+}
+
+@keyframes fadeSlideIn{
+  from{ opacity: 0; transform: translateY(14px);}
+  to{ opacity: 1; transform: translateY(0);}
+}
+@keyframes floatIn{
+  from{ opacity: 0; transform: translateY(18px) scale(0.98);}
+  to{ opacity: 1; transform: translateY(0) scale(1);}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .hero h1, .hero-credit, .hero p, .element-pills > *, .hero .cta, .hero button, .hero .start-button, .hero a.button, .hero a.cta{
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="screen active hero hero" id="screen-home">
+      <div class="hero-card">
+        <div class="eyebrow">Interactive Constitution Journey</div>
+        <h1>Discover Your Five Element Constitution</h1>
+        <div class="hero-credit">Guided assessment designed by Dr. Hari P.M</div>
+        
+      <p class="lead">
+          Explore the elemental tendencies that shape your body, emotions, lifestyle, and inner nature through a simple, engaging assessment. This assessment is for informational purposes only. Results may vary based on how honestly and accurately you respond.
+        </p>
+        <div class="elements element-pills">
+          <div class="chip wood">Wood</div>
+          <div class="chip fire">Fire</div>
+          <div class="chip earth">Earth</div>
+          <div class="chip metal">Metal</div>
+          <div class="chip water">Water</div>
+        </div>
+        <div class="button-row">
+          <button class="btn-primary" id="startBtn">Start Assessment</button>
+          
+          <span class="mini-note">A calm, guided experience with simple questions and a detailed result.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-details">
+      <div class="panel">
+        <div class="topbar">
+          <div>
+            <h2 class="title">Your Basic Details</h2>
+            <p class="subtitle">Please enter your details before continuing to the assessment.</p>
+          </div>
+        </div>
+
+        <form id="detailsForm">
+          <div class="grid-2">
+            <div>
+              <label for="name">Full Name</label>
+              <input id="name" name="name" type="text" placeholder="Enter your name" required />
+            </div>
+            <div>
+              <label for="age">Age</label>
+              <input id="age" name="age" type="number" min="1" max="120" placeholder="Enter your age" required />
+            </div>
+            <div>
+              <label for="place">Place</label>
+              <input id="place" name="place" type="text" placeholder="Enter your place" required />
+            </div>
+            <div>
+              <label for="email">Email ID</label>
+              <input id="email" name="email" type="email" placeholder="Enter your email" required />
+            </div>
+          </div>
+
+          <div class="help">Your details and assessment result will be saved for record and follow-up.</div>
+
+          <div class="button-row" style="margin-top: 22px;">
+            <button type="button" class="btn-secondary" id="backHomeBtn">Back</button>
+            <button type="submit" class="btn-primary">Continue to Assessment</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-quiz">
+      <div class="panel">
+        <div class="progress-wrap">
+          <div class="progress-meta">
+            <span id="progressText">Question 1 of 26</span>
+            <span id="progressPercent">4%</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        </div>
+
+        <div class="question-card">
+          <div class="question-number" id="questionNumber">Question 1</div>
+          <h2 class="question-text" id="questionText"></h2>
+          <div class="options" id="optionsWrap"></div>
+          <div class="question-nav">
+            <button class="btn-secondary" id="prevBtn" type="button">Previous</button>
+            <button class="btn-primary" id="nextBtn" type="button">Next</button>
+          </div>
+        </div>
+        <p class="muted-center">Choose the option that feels most natural or most often true for you.</p>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-result">
+      <div class="panel">
+        <div class="result-head">
+          <span class="tagline">Assessment Complete</span>
+          <h2 class="big-result" id="resultTitle">Your Elemental Constitution</h2>
+          <p class="subtitle" id="resultSubtitle"></p>
+        </div>
+
+        <div class="mini-grid">
+          <div class="mini-card">
+            <p>Dominant Element</p>
+            <strong id="dominantElement">Wood</strong>
+          </div>
+          <div class="mini-card">
+            <p>Secondary Element</p>
+            <strong id="secondaryElement">Fire</strong>
+          </div>
+          <div class="mini-card">
+            <p>Lowest Element</p>
+            <strong id="lowestElement">Water</strong>
+          </div>
+        </div>
+
+        <div class="result-main-grid">
+          <div class="chart-card">
+            <h3>Your Element Balance</h3>
+            <p>Move over the pills below to see what each element represents in simple words.</p>
+            <div class="chart-wrap">
+              <canvas id="radarChart"></canvas>
+            </div>
+            <div class="insight-strip" id="insightStrip"></div>
+            <div class="hover-note" id="hoverNote">Hover over an element name to see a short insight here.</div>
+          </div>
+
+          <div class="chart-card">
+            <h3>Score Breakdown</h3>
+            <p>Your relative pattern across all five elements.</p>
+            <div class="score-bars" id="scoreBars"></div>
+          </div>
+        </div>
+
+        <div class="results-grid">
+          <div class="card">
+            <h3>About You</h3>
+            <p id="aboutYou"></p>
+          </div>
+          <div class="card">
+            <h3>Emotional Pattern</h3>
+            <p id="emotionalPattern"></p>
+          </div>
+          <div class="card">
+            <h3>Physical Tendency</h3>
+            <p id="physicalTendency"></p>
+          </div>
+          <div class="card">
+            <h3>What Helps You</h3>
+            <p id="supportiveNote"></p>
+          </div>
+          <div class="card">
+            <h3>Your Strengths</h3>
+            <ul class="list" id="strengthsList"></ul>
+          </div>
+          <div class="card">
+            <h3>Possible Challenges</h3>
+            <ul class="list" id="challengesList"></ul>
+          </div>
+          <div class="card">
+            <h3>Under Stress</h3>
+            <p id="stressPattern"></p>
+          </div>
+          <div class="card">
+            <h3>Lower Element Insight</h3>
+            <p id="weakElementNote"></p>
+          </div>
+        </div>
+
+        <div class="button-row" style="justify-content:center; margin-top: 24px;">
+          <button class="btn-secondary" id="restartBtn">Start Again</button>
+        </div>
+
+        <p class="footer-note" id="saveStatus">Result prepared successfully.</p>
+      </div>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+// Google Sheets connected
+
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwRLukgQ-OifnAMMEMVVP_ggkgX6FUFMiROBY-eOAK3ZvuPQnujQIBzlD9d9dNElnvF/exec";
+
+    const questions = [
+      { text: "Your body is usually:", options: [
+        { text: "Slim or lean", element: "wood" },
+        { text: "Medium build", element: "fire" },
+        { text: "Slightly heavy or solid", element: "earth" },
+        { text: "Thin but firm", element: "metal" },
+        { text: "Soft or tends to gain weight easily", element: "water" },
+      ]},
+      { text: "Your skin feels:", options: [
+        { text: "A bit dry or rough", element: "wood" },
+        { text: "Warm or slightly sensitive", element: "fire" },
+        { text: "Soft and smooth", element: "earth" },
+        { text: "Dry and delicate", element: "metal" },
+        { text: "Cool and slightly oily", element: "water" },
+      ]},
+      { text: "Your energy is:", options: [
+        { text: "Up and down, not steady", element: "wood" },
+        { text: "High and active", element: "fire" },
+        { text: "Steady and balanced", element: "earth" },
+        { text: "Controlled and calm", element: "metal" },
+        { text: "Low but deep", element: "water" },
+      ]},
+      { text: "Your body usually feels:", options: [
+        { text: "Sometimes warm, sometimes normal", element: "wood" },
+        { text: "Mostly warm or hot", element: "fire" },
+        { text: "Comfortable, not too hot or cold", element: "earth" },
+        { text: "Slightly cool", element: "metal" },
+        { text: "Often cold", element: "water" },
+      ]},
+      { text: "Your way of moving is:", options: [
+        { text: "Fast and active", element: "wood" },
+        { text: "Lively and expressive", element: "fire" },
+        { text: "Slow and steady", element: "earth" },
+        { text: "Careful and controlled", element: "metal" },
+        { text: "Slow and relaxed", element: "water" },
+      ]},
+      { text: "When you are stressed, you usually:", options: [
+        { text: "Get irritated easily", element: "wood" },
+        { text: "Become restless or overexcited", element: "fire" },
+        { text: "Start worrying a lot", element: "earth" },
+        { text: "Feel quiet or low", element: "metal" },
+        { text: "Feel scared or unsure", element: "water" },
+      ]},
+      { text: "Which feeling comes to you most often?", options: [
+        { text: "Anger or irritation", element: "wood" },
+        { text: "Excitement or happiness", element: "fire" },
+        { text: "Worry or concern", element: "earth" },
+        { text: "Sadness", element: "metal" },
+        { text: "Fear", element: "water" },
+      ]},
+      { text: "After getting upset, you:", options: [
+        { text: "Calm down quickly", element: "wood" },
+        { text: "Express and move on fast", element: "fire" },
+        { text: "Take time but settle slowly", element: "earth" },
+        { text: "Keep it inside quietly", element: "metal" },
+        { text: "Take long to recover", element: "water" },
+      ]},
+      { text: "During an argument, you:", options: [
+        { text: "Speak directly and strongly", element: "wood" },
+        { text: "React emotionally", element: "fire" },
+        { text: "Try to calm things", element: "earth" },
+        { text: "Stay silent", element: "metal" },
+        { text: "Avoid it", element: "water" },
+      ]},
+      { text: "In a group, you are usually:", options: [
+        { text: "The one who leads", element: "wood" },
+        { text: "The one who talks and energizes", element: "fire" },
+        { text: "The one who supports others", element: "earth" },
+        { text: "The one who organizes things", element: "metal" },
+        { text: "The one who observes quietly", element: "water" },
+      ]},
+      { text: "When making decisions, you:", options: [
+        { text: "Decide quickly", element: "wood" },
+        { text: "Go with your feelings", element: "fire" },
+        { text: "Think carefully", element: "earth" },
+        { text: "Think logically", element: "metal" },
+        { text: "Take time and go deep", element: "water" },
+      ]},
+      { text: "Your way of talking is:", options: [
+        { text: "Straightforward", element: "wood" },
+        { text: "Friendly and expressive", element: "fire" },
+        { text: "Warm and caring", element: "earth" },
+        { text: "Clear and structured", element: "metal" },
+        { text: "Quiet and thoughtful", element: "water" },
+      ]},
+      { text: "Your work style is:", options: [
+        { text: "Fast and goal-focused", element: "wood" },
+        { text: "Energetic and passionate", element: "fire" },
+        { text: "Steady and dependable", element: "earth" },
+        { text: "Detail-focused", element: "metal" },
+        { text: "Deep and thoughtful", element: "water" },
+      ]},
+      { text: "You feel most comfortable in:", options: [
+        { text: "Windy weather", element: "wood" },
+        { text: "Warm or hot weather", element: "fire" },
+        { text: "Mild and comfortable weather", element: "earth" },
+        { text: "Cool and dry weather", element: "metal" },
+        { text: "Cold weather", element: "water" },
+      ]},
+      { text: "You mostly like food that is:", options: [
+        { text: "Fresh and slightly sour", element: "wood" },
+        { text: "Spicy or strong", element: "fire" },
+        { text: "Sweet and filling", element: "earth" },
+        { text: "Light and simple", element: "metal" },
+        { text: "Salty or rich", element: "water" },
+      ]},
+      { text: "Your sleep is:", options: [
+        { text: "Light and easily disturbed", element: "wood" },
+        { text: "Short but refreshing", element: "fire" },
+        { text: "Deep and steady", element: "earth" },
+        { text: "Regular and disciplined", element: "metal" },
+        { text: "Heavy and long", element: "water" },
+      ]},
+      { text: "Your daily routine is:", options: [
+        { text: "Not fixed, changes often", element: "wood" },
+        { text: "Fast and busy", element: "fire" },
+        { text: "Balanced and regular", element: "earth" },
+        { text: "Well planned", element: "metal" },
+        { text: "Slow and relaxed", element: "water" },
+      ]},
+      { text: "Your digestion is:", options: [
+        { text: "Irregular", element: "wood" },
+        { text: "Strong but sensitive", element: "fire" },
+        { text: "Slow but steady", element: "earth" },
+        { text: "Sensitive", element: "metal" },
+        { text: "Slow", element: "water" },
+      ]},
+      { text: "Your appetite is:", options: [
+        { text: "Sometimes high, sometimes low", element: "wood" },
+        { text: "Strong", element: "fire" },
+        { text: "Moderate", element: "earth" },
+        { text: "Low", element: "metal" },
+        { text: "Low most of the time", element: "water" },
+      ]},
+      { text: "You often feel:", options: [
+        { text: "Tightness in body", element: "wood" },
+        { text: "Heat or burning", element: "fire" },
+        { text: "Heaviness or bloating", element: "earth" },
+        { text: "Dryness or breathing issues", element: "metal" },
+        { text: "Coldness or back weakness", element: "water" },
+      ]},
+      { text: "Under pressure, you:", options: [
+        { text: "Push yourself more", element: "wood" },
+        { text: "Become restless", element: "fire" },
+        { text: "Look for comfort", element: "earth" },
+        { text: "Become strict or rigid", element: "metal" },
+        { text: "Withdraw", element: "water" },
+      ]},
+      { text: "What troubles you most?", options: [
+        { text: "Things not moving forward", element: "wood" },
+        { text: "Too much emotional drama", element: "fire" },
+        { text: "Lack of stability", element: "earth" },
+        { text: "Mess or disorder", element: "metal" },
+        { text: "Uncertainty", element: "water" },
+      ]},
+      { text: "What helps you feel better?", options: [
+        { text: "Activity and movement", element: "wood" },
+        { text: "Talking to people", element: "fire" },
+        { text: "Rest and comfort", element: "earth" },
+        { text: "Order and clarity", element: "metal" },
+        { text: "Silence and alone time", element: "water" },
+      ]},
+      { text: "You feel happiest when:", options: [
+        { text: "You are growing or achieving", element: "wood" },
+        { text: "You are expressing yourself", element: "fire" },
+        { text: "You are helping others", element: "earth" },
+        { text: "Things are organized", element: "metal" },
+        { text: "You are thinking deeply", element: "water" },
+      ]},
+      { text: "What matters most to you?", options: [
+        { text: "Growth", element: "wood" },
+        { text: "Joy", element: "fire" },
+        { text: "Stability", element: "earth" },
+        { text: "Perfection", element: "metal" },
+        { text: "Understanding", element: "water" },
+      ]},
+      { text: "People usually see you as:", options: [
+        { text: "Strong and determined", element: "wood" },
+        { text: "Cheerful and lively", element: "fire" },
+        { text: "Caring and reliable", element: "earth" },
+        { text: "Neat and precise", element: "metal" },
+        { text: "Deep and thoughtful", element: "water" },
+      ]}
+    ];
+
+    const elementInfo = {
+      wood: {
+        title: "Wood",
+        hover: "Growth, movement, direction, drive.",
+        about: "You may naturally be active, driven, forward-moving, and eager for progress. You often feel better when life has direction and momentum.",
+        emotion: "You may react through irritation, impatience, or frustration when things feel blocked or delayed.",
+        physical: "You may notice tension, restlessness, or an up-and-down energy pattern more easily than some others.",
+        strengths: ["Determined", "Action-oriented", "Motivated", "Good at moving things forward"],
+        challenges: ["Impatience", "Frustration when blocked", "Difficulty slowing down", "Pushing too hard"],
+        stress: "When stressed, you may become sharp, reactive, or feel a strong need to push through obstacles quickly.",
+        help: "Regular movement, space to breathe, flexible planning, and learning when to pause can help you a lot.",
+        weak: "When Wood is lower, you may need more initiative, motivation, or healthy movement in daily life."
+      },
+      fire: {
+        title: "Fire",
+        hover: "Warmth, expression, joy, connection.",
+        about: "You may naturally be expressive, lively, emotionally bright, and easy to notice. You often bring warmth and energy into situations.",
+        emotion: "You may feel emotions strongly and show them openly. Excitement and restlessness may come quickly.",
+        physical: "You may feel warmth, sensitivity, or bursts of strong energy followed by a need to slow down.",
+        strengths: ["Charismatic", "Expressive", "Warm-hearted", "Able to energize others"],
+        challenges: ["Overexcitement", "Emotional ups and downs", "Difficulty settling", "Mental overstimulation"],
+        stress: "When stressed, you may become restless, emotionally overloaded, or feel scattered by too much stimulation.",
+        help: "Cooling routines, calm surroundings, deep rest, and meaningful but not excessive connection can help restore balance.",
+        weak: "When Fire is lower, you may need more joy, emotional warmth, social expression, or lightness in life."
+      },
+      earth: {
+        title: "Earth",
+        hover: "Stability, care, support, nourishment.",
+        about: "You may naturally be supportive, dependable, grounding, and caring. You often value steadiness, comfort, and emotional security.",
+        emotion: "You may care deeply, worry easily, or carry other people's concerns inside your mind for too long.",
+        physical: "You may feel heaviness, bloating, slower energy, or a stronger need for regular nourishment and routine.",
+        strengths: ["Reliable", "Supportive", "Grounded", "Good at caring for others"],
+        challenges: ["Overthinking", "Mental heaviness", "Attachment", "Getting stuck in comfort"],
+        stress: "When stressed, you may worry, hold on, or seek comfort while feeling mentally and physically heavier.",
+        help: "Simple food habits, routine, light activity, and not carrying too much emotional weight can support you well.",
+        weak: "When Earth is lower, you may need more stability, nourishment, practical routine, or emotional grounding."
+      },
+      metal: {
+        title: "Metal",
+        hover: "Clarity, order, discipline, refinement.",
+        about: "You may naturally be clear, thoughtful, disciplined, and organized. You often value neatness, structure, and meaningful order.",
+        emotion: "You may keep feelings inside, stay reserved, or struggle to release sadness, disappointment, or inner pressure.",
+        physical: "You may notice dryness, sensitivity, or a tendency to hold tension through control and tightness.",
+        strengths: ["Precise", "Disciplined", "Organized", "Strong sense of clarity"],
+        challenges: ["Rigidity", "Perfectionism", "Holding feelings in", "Being too self-controlled"],
+        stress: "When stressed, you may become overly strict, withdrawn, or uncomfortable when things feel messy or out of order.",
+        help: "Breathing space, softness, flexibility, and allowing imperfection can help you feel lighter and freer.",
+        weak: "When Metal is lower, you may need more structure, clarity, healthy boundaries, or a better sense of order."
+      },
+      water: {
+        title: "Water",
+        hover: "Depth, wisdom, quiet strength, reflection.",
+        about: "You may naturally be thoughtful, inward, deep, intuitive, and calm beneath the surface. You often value meaning and inner understanding.",
+        emotion: "You may feel fear, uncertainty, or the need to withdraw when life becomes too intense or demanding.",
+        physical: "You may feel colder, lower in energy, or better suited to slow, steady rhythms than fast, demanding ones.",
+        strengths: ["Deep thinker", "Observant", "Calm", "Quietly strong"],
+        challenges: ["Withdrawal", "Fearfulness", "Low motivation", "Keeping too much inside"],
+        stress: "When stressed, you may retreat, lose momentum, or feel safer staying hidden rather than pushing forward.",
+        help: "Warmth, rest, trust-building routines, and gentle confidence can help you feel stronger and more secure.",
+        weak: "When Water is lower, you may need more rest, inner quiet, confidence, or deeper support to feel steady."
+      }
+    };
+
+    const elementColors = {
+      wood: '#5f9f6a',
+      fire: '#d96557',
+      earth: '#c7a15c',
+      metal: '#aeb7c4',
+      water: '#5378b7'
+    };
+
+    const screens = {
+      home: document.getElementById('screen-home'),
+      details: document.getElementById('screen-details'),
+      quiz: document.getElementById('screen-quiz'),
+      result: document.getElementById('screen-result')
+    };
+
+    const detailsForm = document.getElementById('detailsForm');
+    const startBtn = document.getElementById('startBtn');
+    const backHomeBtn = document.getElementById('backHomeBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const restartBtn = document.getElementById('restartBtn');
+
+    const questionNumber = document.getElementById('questionNumber');
+    const questionText = document.getElementById('questionText');
+    const optionsWrap = document.getElementById('optionsWrap');
+    const progressText = document.getElementById('progressText');
+    const progressPercent = document.getElementById('progressPercent');
+    const progressFill = document.getElementById('progressFill');
+
+    const resultTitle = document.getElementById('resultTitle');
+    const resultSubtitle = document.getElementById('resultSubtitle');
+    const dominantElement = document.getElementById('dominantElement');
+    const secondaryElement = document.getElementById('secondaryElement');
+    const lowestElement = document.getElementById('lowestElement');
+
+const aboutYou = document.getElementById('aboutYou');
+    const emotionalPattern = document.getElementById('emotionalPattern');
+    const physicalTendency = document.getElementById('physicalTendency');
+    const supportiveNote = document.getElementById('supportiveNote');
+    const strengthsList = document.getElementById('strengthsList');
+    const challengesList = document.getElementById('challengesList');
+    const stressPattern = document.getElementById('stressPattern');
+    const weakElementNote = document.getElementById('weakElementNote');
+    const scoreBars = document.getElementById('scoreBars');
+    const insightStrip = document.getElementById('insightStrip');
+    const hoverNote = document.getElementById('hoverNote');
+    const saveStatus = document.getElementById('saveStatus');
+
+    let currentQuestion = 0;
+    let answers = Array(questions.length).fill(null);
+    let userDetails = null;
+    let radarChart = null;
+
+    function showScreen(name) {
+      Object.values(screens).forEach(screen => screen.classList.remove('active'));
+      screens[name].classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderQuestion() {
+      const q = questions[currentQuestion];
+      const percent = Math.round(((currentQuestion + 1) / questions.length) * 100);
+
+      questionNumber.textContent = `Question ${currentQuestion + 1}`;
+      questionText.textContent = q.text;
+      progressText.textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
+      progressPercent.textContent = `${percent}%`;
+      progressFill.style.width = `${percent}%`;
+
+      optionsWrap.innerHTML = '';
+
+      q.options.forEach((option, idx) => {
+        const id = `q${currentQuestion}_o${idx}`;
+        const label = document.createElement('label');
+        label.className = 'option';
+        label.setAttribute('for', id);
+        label.innerHTML = `
+          <input type="radio" name="currentQuestion" id="${id}" value="${idx}" ${answers[currentQuestion] === idx ? 'checked' : ''}>
+          <span>${option.text}</span>
+        `;
+        const input = label.querySelector('input');
+        input.addEventListener('change', () => { answers[currentQuestion] = idx; });
+        optionsWrap.appendChild(label);
+      });
+
+      prevBtn.disabled = currentQuestion === 0;
+      nextBtn.textContent = currentQuestion === questions.length - 1 ? 'See Result' : 'Next';
+    }
+
+    function calculateScores() {
+      const scores = { wood: 0, fire: 0, earth: 0, metal: 0, water: 0 };
+      answers.forEach((answerIndex, qIndex) => {
+        const chosen = questions[qIndex].options[answerIndex];
+        if (chosen) scores[chosen.element] += 3;
+      });
+      return scores;
+    }
+
+    function getSortedElements(scores) {
+      return Object.entries(scores).sort((a, b) => b[1] - a[1]).map(entry => entry[0]);
+    }
+
+    function setList(el, items) {
+      el.innerHTML = items.map(item => `<li>${item}</li>`).join('');
+    }
+
+    function renderHoverPills() {
+      insightStrip.innerHTML = '';
+      ['wood', 'fire', 'earth', 'metal', 'water'].forEach(key => {
+        const pill = document.createElement('div');
+        pill.className = 'insight-pill';
+        pill.textContent = elementInfo[key].title;
+        pill.addEventListener('mouseenter', () => {
+          hoverNote.textContent = `${elementInfo[key].title}: ${elementInfo[key].hover}`;
+        });
+        pill.addEventListener('mouseleave', () => {
+          hoverNote.textContent = 'Hover over an element name to see a short insight here.';
+        });
+        insightStrip.appendChild(pill);
+      });
+    }
+
+    function renderRadar(scores) {
+      const canvas = document.getElementById('radarChart');
+      const values = ['wood', 'fire', 'earth', 'metal', 'water'].map(key => scores[key]);
+
+      if (radarChart) radarChart.destroy();
+
+      radarChart = new Chart(canvas, {
+        type: 'radar',
+        data: {
+          labels: ['Wood', 'Fire', 'Earth', 'Metal', 'Water'],
+          datasets: [{
+            label: 'Your scores',
+            data: values,
+            borderColor: 'rgba(246,214,154,0.95)',
+            backgroundColor: 'rgba(125,211,252,0.18)',
+            pointBackgroundColor: ['#5f9f6a', '#d96557', '#c7a15c', '#aeb7c4', '#5378b7'],
+            pointBorderColor: '#ffffff',
+            pointRadius: 4,
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: { duration: 1100 },
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            r: {
+              angleLines: { color: 'rgba(255,255,255,0.14)' },
+              grid: { color: 'rgba(255,255,255,0.14)' },
+              pointLabels: { color: '#eef2ff', font: { size: 13, weight: '600' } },
+              ticks: { display: false, stepSize: 3 },
+              suggestedMin: 0,
+              suggestedMax: Math.max(...values, 12)
+            }
+          }
+        }
+      });
+    }
+
+    function renderResults(scores) {
+      const sorted = getSortedElements(scores);
+      const [primary, secondary, , , lowest] = sorted;
+      const total = Object.values(scores).reduce((sum, val) => sum + val, 0) || 1;
+
+      const primaryData = elementInfo[primary];
+      const secondaryData = elementInfo[secondary];
+      const lowestData = elementInfo[lowest];
+
+      resultTitle.textContent = `${primaryData.title}–${secondaryData.title}`;
+      resultSubtitle.textContent = `Your pattern shows ${primaryData.title} as the strongest influence, with ${secondaryData.title} close behind.`;
+      dominantElement.textContent = primaryData.title;
+      secondaryElement.textContent = secondaryData.title;
+      lowestElement.textContent = lowestData.title;
+
+      aboutYou.textContent = `${primaryData.about} ${secondaryData.title !== primaryData.title ? `There is also a clear ${secondaryData.title.toLowerCase()} influence, which may add some of its qualities to your overall pattern.` : ''}`;
+      emotionalPattern.textContent = `${primaryData.emotion} A secondary ${secondaryData.title.toLowerCase()} influence may also shape how you respond in relationships and under pressure.`;
+      physicalTendency.textContent = `${primaryData.physical} With ${secondaryData.title.toLowerCase()} also present, your body pattern may show a blend rather than only one pure type.`;
+      supportiveNote.textContent = primaryData.help;
+      stressPattern.textContent = primaryData.stress;
+      weakElementNote.textContent = lowestData.weak;
+
+      setList(strengthsList, primaryData.strengths);
+      setList(challengesList, primaryData.challenges);
+
+      scoreBars.innerHTML = '';
+      ['wood', 'fire', 'earth', 'metal', 'water'].forEach(key => {
+        const pct = Math.round((scores[key] / total) * 100);
+        const row = document.createElement('div');
+        row.className = 'score-line';
+        row.innerHTML = `
+          <div class="score-label">${elementInfo[key].title}</div>
+          <div class="bar ${key}"><div style="width:${pct}%"></div></div>
+          <div>${pct}%</div>
+        `;
+        scoreBars.appendChild(row);
+      });
+
+      renderHoverPills();
+      renderRadar(scores);
+    }
+
+    async function saveSubmission(scores) {
+      if (!userDetails) return;
+
+      const sorted = getSortedElements(scores);
+      const [primary, secondary] = sorted;
+      const payload = {
+        timestamp: new Date().toISOString(),
+        name: userDetails.name,
+        age: userDetails.age,
+        place: userDetails.place,
+        email: userDetails.email,
+        wood: scores.wood,
+        fire: scores.fire,
+        earth: scores.earth,
+        metal: scores.metal,
+        water: scores.water,
+        primary: elementInfo[primary].title,
+        secondary: elementInfo[secondary].title,
+      };
+
+      if (!APPS_SCRIPT_URL) {
+        saveStatus.textContent = 'Assessment completed. Add your Google Apps Script URL inside the HTML file to save results to Google Sheets.';
+        return;
+      }
+
+      try {
+        saveStatus.textContent = 'Saving result...';
+        await fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(payload),
+          mode: 'cors'
+        });
+        saveStatus.textContent = 'Your details and result were saved successfully.';
+      } catch (error) {
+        console.error(error);
+        saveStatus.textContent = 'Result shown successfully, but saving to Google Sheets could not be completed right now.';
+      }
+    }
+
+    startBtn.addEventListener('click', () => showScreen('details'));
+    backHomeBtn.addEventListener('click', () => showScreen('home'));
+
+    detailsForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(detailsForm);
+      userDetails = {
+        name: String(formData.get('name')).trim(),
+        age: String(formData.get('age')).trim(),
+        place: String(formData.get('place')).trim(),
+        email: String(formData.get('email')).trim()
+      };
+      currentQuestion = 0;
+      answers = Array(questions.length).fill(null);
+      renderQuestion();
+      showScreen('quiz');
+    });
+
+    prevBtn.addEventListener('click', () => {
+      if (currentQuestion > 0) {
+        currentQuestion -= 1;
+        renderQuestion();
+      }
+    });
+
+    nextBtn.addEventListener('click', async () => {
+      if (answers[currentQuestion] === null) {
+        alert('Please choose one answer before continuing.');
+        return;
+      }
+
+      if (currentQuestion < questions.length - 1) {
+        currentQuestion += 1;
+        renderQuestion();
+        return;
+      }
+
+      const scores = calculateScores();
+      renderResults(scores);
+      showScreen('result');
+      await saveSubmission(scores);
+    });
+
+    restartBtn.addEventListener('click', () => {
+      detailsForm.reset();
+      userDetails = null;
+      answers = Array(questions.length).fill(null);
+      currentQuestion = 0;
+      saveStatus.textContent = 'Result prepared successfully.';
+      if (radarChart) {
+        radarChart.destroy();
+        radarChart = null;
+      }
+      showScreen('home');
+    });
+  </script>
+</body>
+</html>

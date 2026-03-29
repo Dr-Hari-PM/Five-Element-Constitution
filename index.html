@@ -4,16 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Five Element Constitution Assessment</title>
-
-  <!-- Open Graph / WhatsApp Preview -->
-  <meta property="og:title" content="Five Element Constitution Assessment">
-  <meta property="og:description" content="Discover your Five Element Constitution through a guided interactive assessment designed by Dr. Hari P.M.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://dr-hari-pm.github.io/Five-Element-Constitution/">
-  <meta property="og:image" content="https://dr-hari-pm.github.io/Five-Element-Constitution/thumbnail.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-
   <style>
     :root {
       --bg1: #0f172a;
@@ -453,7 +443,7 @@
 
     .mini-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
+      grid-template-columns: repeat(4, minmax(0,1fr));
       gap: 14px;
       margin-top: 18px;
     }
@@ -607,6 +597,311 @@
   }
 }
 
+
+    .result-hero-band{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      margin: 8px 0 22px;
+    }
+    .result-story{
+      background: linear-gradient(135deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 28px;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .result-story::after{
+      content:"";
+      position:absolute;
+      inset:auto -50px -50px auto;
+      width:180px;
+      height:180px;
+      background: radial-gradient(circle, rgba(246,214,154,.18), transparent 65%);
+      border-radius:50%;
+      pointer-events:none;
+    }
+    .constitution-line{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+    }
+    .constitution-badge{
+      padding:10px 14px;
+      border-radius:999px;
+      background: rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.1);
+      font-size:.92rem;
+      color:#f8fafc;
+    }
+    .pattern-spotlight{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:14px;
+    }
+    .spot-card{
+      padding:18px;
+      border-radius:22px;
+      background: rgba(255,255,255,.055);
+      border:1px solid rgba(255,255,255,.1);
+      min-height:114px;
+    }
+    .spot-label{
+      color: var(--muted);
+      font-size:.9rem;
+      margin-bottom:6px;
+    }
+    .spot-value{
+      font-size:1.2rem;
+      font-weight:800;
+      line-height:1.25;
+    }
+    .story-meter{
+      margin-top:18px;
+      display:grid;
+      gap:10px;
+    }
+    .meter-track{
+      height:14px;
+      border-radius:999px;
+      background: rgba(255,255,255,.08);
+      overflow:hidden;
+    }
+    .meter-fill{
+      height:100%;
+      width:0;
+      border-radius:999px;
+      background: linear-gradient(90deg, #7dd3fc, #f6d69a);
+      transition: width .9s ease;
+    }
+    .meter-meta{
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      color: var(--muted);
+      font-size:.9rem;
+    }
+    .subcharts-grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:18px;
+      margin-top:18px;
+    }
+    .subchart-card{
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 24px;
+      padding: 18px;
+      text-align:center;
+    }
+    .subchart-card h4{
+      margin:0 0 6px;
+      font-size:1rem;
+    }
+    .subchart-card p{
+      margin:0 0 14px;
+      color: var(--muted);
+      font-size:.92rem;
+      line-height:1.55;
+    }
+    .subchart-wrap{
+      position:relative;
+      height:220px;
+    }
+    .dominance-grid{
+      display:grid;
+      grid-template-columns: repeat(5, minmax(0,1fr));
+      gap:12px;
+      margin-top:18px;
+    }
+    .dominance-card{
+      padding:16px 14px;
+      border-radius:20px;
+      background: rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.1);
+      text-align:center;
+    }
+    .dominance-card .element-name{
+      font-size:.9rem;
+      color: var(--muted);
+      margin-bottom:6px;
+    }
+    .dominance-card .element-score{
+      font-size:1.35rem;
+      font-weight:800;
+      margin-bottom:6px;
+    }
+    .dominance-rank{
+      display:inline-block;
+      padding:5px 10px;
+      border-radius:999px;
+      background: rgba(255,255,255,.08);
+      font-size:.78rem;
+      color:#f8fafc;
+    }
+    @media (max-width: 980px){
+      .result-hero-band, .subcharts-grid, .dominance-grid{ grid-template-columns: 1fr; }
+      .pattern-spotlight{ grid-template-columns:1fr; }
+    }
+
+
+    .icon-badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      margin-right:8px;
+      font-size:1rem;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.1);
+      vertical-align:middle;
+    }
+    .result-card-share{
+      margin-top:22px;
+      background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:30px;
+      padding:26px;
+      position:relative;
+      overflow:hidden;
+    }
+    .result-card-share::before{
+      content:"";
+      position:absolute;
+      inset:auto auto -30px -20px;
+      width:180px;
+      height:180px;
+      background: radial-gradient(circle, rgba(125,211,252,.18), transparent 65%);
+      border-radius:50%;
+      pointer-events:none;
+    }
+    .result-card-share::after{
+      content:"";
+      position:absolute;
+      inset:-40px -30px auto auto;
+      width:160px;
+      height:160px;
+      background: radial-gradient(circle, rgba(246,214,154,.16), transparent 65%);
+      border-radius:50%;
+      pointer-events:none;
+    }
+    .share-card-header{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      align-items:flex-start;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+    .share-title{
+      margin:0;
+      font-size:1.5rem;
+      line-height:1.2;
+    }
+    .share-sub{
+      margin:8px 0 0;
+      color:var(--muted);
+      line-height:1.6;
+      max-width:58ch;
+    }
+    .share-mini-grid{
+      display:grid;
+      grid-template-columns:repeat(5,minmax(0,1fr));
+      gap:12px;
+      margin-top:16px;
+    }
+    .share-mini{
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:18px;
+      padding:14px;
+      text-align:center;
+    }
+    .share-mini .label{
+      color:var(--muted);
+      font-size:.82rem;
+      margin-bottom:6px;
+    }
+    .share-mini .value{
+      font-size:1.05rem;
+      font-weight:800;
+      line-height:1.3;
+    }
+    .counter{
+      display:inline-block;
+      min-width:2ch;
+      font-variant-numeric: tabular-nums;
+    }
+    .share-quote{
+      margin-top:18px;
+      padding:16px 18px;
+      border-radius:18px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      color:#f8fafc;
+      line-height:1.8;
+    }
+    .share-actions{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+    .soft-note{
+      text-align:center;
+      color:var(--muted);
+      font-size:.9rem;
+      margin-top:10px;
+    }
+    @media (max-width:980px){
+      .share-mini-grid{grid-template-columns:1fr 1fr;}
+    }
+
+
+    .insight-pill{
+      cursor:pointer;
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .insight-pill.active{
+      background: rgba(246,214,154,.14);
+      border-color: rgba(246,214,154,.35);
+      color:#fff3d1;
+    }
+    .btn-download{
+      color:#0f172a;
+      background: linear-gradient(135deg, #f6d69a, #e4b768);
+      box-shadow: 0 10px 24px rgba(228,183,104,.18);
+    }
+    .download-status{
+      text-align:right;
+      color:var(--muted);
+      font-size:.88rem;
+      margin-top:10px;
+      min-height:1.2em;
+    }
+    @media print{
+      body *{ visibility:hidden !important; }
+      #shareCard, #shareCard *{ visibility:visible !important; }
+      #shareCard{
+        position:absolute;
+        inset:0 auto auto 0;
+        width:100%;
+        margin:0;
+        border:none;
+        box-shadow:none;
+        background:#1f2937 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .share-actions, .download-status{ display:none !important; }
+    }
+
 </style>
 </head>
 <body>
@@ -699,24 +994,49 @@
 
     <section class="screen" id="screen-result">
       <div class="panel">
+        
         <div class="result-head">
           <span class="tagline">Assessment Complete</span>
           <h2 class="big-result" id="resultTitle">Your Elemental Constitution</h2>
           <p class="subtitle" id="resultSubtitle"></p>
         </div>
 
-        <div class="mini-grid">
-          <div class="mini-card">
-            <p>Dominant Element</p>
-            <strong id="dominantElement">Wood</strong>
+        <div class="result-hero-band">
+          <div class="result-story">
+            <h3 style="margin:0 0 8px;">Your Main Result</h3>
+            <p class="subtitle" id="resultStoryIntro" style="margin:0;">A quick visual summary of how your overall constitution appears.</p>
+            <div class="constitution-line">
+              <span class="constitution-badge" id="coreConstitution">Main: Wood–Fire</span>
+              <span class="constitution-badge" id="bodyPattern">Support: Fire</span>
+              <span class="constitution-badge" id="mindPattern">Natural style: Metal–Water</span>
+              <span class="constitution-badge" id="stressPatternBadge">When life gets hard: Wood</span>
+            </div>
+            <div class="story-meter">
+              <div class="meter-meta">
+                <span>Dominant pull</span>
+                <span id="dominanceMeta">Wood strongly leads over Fire</span>
+              </div>
+              <div class="meter-track"><div class="meter-fill" id="dominanceFill"></div></div>
+            </div>
           </div>
-          <div class="mini-card">
-            <p>Secondary Element</p>
-            <strong id="secondaryElement">Fire</strong>
-          </div>
-          <div class="mini-card">
-            <p>Lowest Element</p>
-            <strong id="lowestElement">Water</strong>
+
+          <div class="pattern-spotlight">
+            <div class="spot-card">
+              <div class="spot-label">Main element</div>
+              <div class="spot-value" id="strongestElementCard">Wood</div>
+            </div>
+            <div class="spot-card">
+              <div class="spot-label">Second element</div>
+              <div class="spot-value" id="secondElementCard">Fire</div>
+            </div>
+            <div class="spot-card">
+              <div class="spot-label">Emotional side</div>
+              <div class="spot-value" id="bodyPatternCard">Fire</div>
+            </div>
+            <div class="spot-card">
+              <div class="spot-label">When life gets hard</div>
+              <div class="spot-value" id="stressPatternCard">Wood</div>
+            </div>
           </div>
         </div>
 
@@ -732,48 +1052,132 @@
           </div>
 
           <div class="chart-card">
-            <h3>Score Breakdown</h3>
-            <p>Your relative pattern across all five elements.</p>
+            <h3>Core Score Breakdown</h3>
+            <p>Your full constitution spread across all five elements.</p>
             <div class="score-bars" id="scoreBars"></div>
+            <div class="dominance-grid" id="dominanceGrid"></div>
           </div>
         </div>
 
-        <div class="results-grid">
+        <div class="subcharts-grid"><div class="click-note" style="grid-column:1/-1; text-align:center;">Tap or click a chart to see a short explanation below it.</div>
+          <div class="subchart-card">
+            <h4>Body Tendency</h4>
+            <p>This shows which elements are appearing more in your physical side.</p>
+            <div class="subchart-wrap"><canvas id="bodyChart"></canvas></div>
+          </div>
+          <div class="subchart-card">
+            <h4>Emotional Tendency</h4>
+            <p>This shows which elements are appearing more in your emotional side.</p>
+            <div class="subchart-wrap"><canvas id="mindChart"></canvas></div>
+          </div>
+          <div class="subchart-card">
+            <h4>Reaction Under Pressure</h4>
+            <p>This shows which elements come up more when life becomes stressful.</p>
+            <div class="subchart-wrap"><canvas id="stressChart"></canvas></div>
+          </div>
+        </div>
+
+        
+<div class="results-grid">
           <div class="card">
-            <h3>About You</h3>
+            <h3>About Your Nature</h3>
             <p id="aboutYou"></p>
           </div>
           <div class="card">
-            <h3>Emotional Pattern</h3>
+            <h3>Your Emotional Pattern</h3>
             <p id="emotionalPattern"></p>
           </div>
           <div class="card">
-            <h3>Physical Tendency</h3>
-            <p id="physicalTendency"></p>
+            <h3>Foods That May Suit You</h3>
+            <ul class="list" id="foodsEnjoyList"></ul>
           </div>
           <div class="card">
-            <h3>What Helps You</h3>
-            <p id="supportiveNote"></p>
+            <h3>Foods to Go Easier On</h3>
+            <ul class="list" id="foodsReduceList"></ul>
           </div>
           <div class="card">
-            <h3>Your Strengths</h3>
-            <ul class="list" id="strengthsList"></ul>
+            <h3>Activities That May Help</h3>
+            <ul class="list" id="activitiesDoList"></ul>
           </div>
           <div class="card">
-            <h3>Possible Challenges</h3>
-            <ul class="list" id="challengesList"></ul>
+            <h3>Activities to Be Careful With</h3>
+            <ul class="list" id="activitiesAvoidList"></ul>
           </div>
           <div class="card">
-            <h3>Under Stress</h3>
-            <p id="stressPattern"></p>
+            <h3>You May Be More Prone To</h3>
+            <ul class="list" id="tendenciesList"></ul>
           </div>
           <div class="card">
-            <h3>Lower Element Insight</h3>
-            <p id="weakElementNote"></p>
+            <h3>What Helps You Feel Balanced</h3>
+            <p id="balanceHelp"></p>
           </div>
         </div>
 
+
+        <div class="result-card-share" id="shareCard">
+          <div class="share-card-header">
+            <div>
+              <h3 class="share-title">Your Five Element Snapshot</h3>
+              <p class="share-sub" id="shareSubtitle">A clean summary card you can save as PDF or use for screenshots.</p>
+            </div>
+            <div class="constitution-badge" id="shareCoreBadge">Core: Wood–Fire</div>
+          </div>
+
+          <div class="share-mini-grid">
+            <div class="share-mini">
+              <div class="label">Core</div>
+              <div class="value" id="shareCoreValue">Wood–Fire</div>
+            </div>
+            <div class="share-mini">
+              <div class="label">Body</div>
+              <div class="value" id="shareBodyValue">Fire</div>
+            </div>
+            <div class="share-mini">
+              <div class="label">Mind</div>
+              <div class="value" id="shareMindValue">Metal–Water</div>
+            </div>
+            <div class="share-mini">
+              <div class="label">Stress</div>
+              <div class="value" id="shareStressValue">Wood</div>
+            </div>
+          </div>
+
+          <div class="share-mini-grid" style="margin-top:12px;">
+            <div class="share-mini">
+              <div class="label">Wood</div>
+              <div class="value"><span class="counter" id="counterWood">0</span>%</div>
+            </div>
+            <div class="share-mini">
+              <div class="label">Fire</div>
+              <div class="value"><span class="counter" id="counterFire">0</span>%</div>
+            </div>
+            <div class="share-mini">
+              <div class="label">Earth</div>
+              <div class="value"><span class="counter" id="counterEarth">0</span>%</div>
+            </div>
+            <div class="share-mini">
+              <div class="label">Metal</div>
+              <div class="value"><span class="counter" id="counterMetal">0</span>%</div>
+            </div>
+            <div class="share-mini">
+              <div class="label">Water</div>
+              <div class="value"><span class="counter" id="counterWater">0</span>%</div>
+            </div>
+          </div>
+
+          <div class="share-quote" id="shareQuote">
+            Grounded overall, with a clear inner pattern and a recognizable stress response.
+          </div>
+
+          <div class="share-actions">
+            <button class="btn-download" id="downloadPdfBtn" type="button">Download Result PDF</button>
+          </div>
+          <div class="soft-note">You can save this card as a PDF and also use it for screenshots.</div><div class="download-status" id="downloadStatus"></div>
+        </div>
+
+
         <div class="button-row" style="justify-content:center; margin-top: 24px;">
+    
           <button class="btn-secondary" id="restartBtn">Start Again</button>
         </div>
 
@@ -783,256 +1187,656 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
   <script>
 // Google Sheets connected
 
     const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwRLukgQ-OifnAMMEMVVP_ggkgX6FUFMiROBY-eOAK3ZvuPQnujQIBzlD9d9dNElnvF/exec";
 
+    
     const questions = [
-      { text: "Your body is usually:", options: [
-        { text: "Slim or lean", element: "wood" },
-        { text: "Medium build", element: "fire" },
-        { text: "Slightly heavy or solid", element: "earth" },
-        { text: "Thin but firm", element: "metal" },
-        { text: "Soft or tends to gain weight easily", element: "water" },
-      ]},
-      { text: "Your skin feels:", options: [
-        { text: "A bit dry or rough", element: "wood" },
-        { text: "Warm or slightly sensitive", element: "fire" },
-        { text: "Soft and smooth", element: "earth" },
-        { text: "Dry and delicate", element: "metal" },
-        { text: "Cool and slightly oily", element: "water" },
-      ]},
-      { text: "Your energy is:", options: [
-        { text: "Up and down, not steady", element: "wood" },
-        { text: "High and active", element: "fire" },
-        { text: "Steady and balanced", element: "earth" },
-        { text: "Controlled and calm", element: "metal" },
-        { text: "Low but deep", element: "water" },
-      ]},
-      { text: "Your body usually feels:", options: [
-        { text: "Sometimes warm, sometimes normal", element: "wood" },
-        { text: "Mostly warm or hot", element: "fire" },
-        { text: "Comfortable, not too hot or cold", element: "earth" },
-        { text: "Slightly cool", element: "metal" },
-        { text: "Often cold", element: "water" },
-      ]},
-      { text: "Your way of moving is:", options: [
-        { text: "Fast and active", element: "wood" },
-        { text: "Lively and expressive", element: "fire" },
-        { text: "Slow and steady", element: "earth" },
-        { text: "Careful and controlled", element: "metal" },
-        { text: "Slow and relaxed", element: "water" },
-      ]},
-      { text: "When you are stressed, you usually:", options: [
-        { text: "Get irritated easily", element: "wood" },
-        { text: "Become restless or overexcited", element: "fire" },
-        { text: "Start worrying a lot", element: "earth" },
-        { text: "Feel quiet or low", element: "metal" },
-        { text: "Feel scared or unsure", element: "water" },
-      ]},
-      { text: "Which feeling comes to you most often?", options: [
-        { text: "Anger or irritation", element: "wood" },
-        { text: "Excitement or happiness", element: "fire" },
-        { text: "Worry or concern", element: "earth" },
-        { text: "Sadness", element: "metal" },
-        { text: "Fear", element: "water" },
-      ]},
-      { text: "After getting upset, you:", options: [
-        { text: "Calm down quickly", element: "wood" },
-        { text: "Express and move on fast", element: "fire" },
-        { text: "Take time but settle slowly", element: "earth" },
-        { text: "Keep it inside quietly", element: "metal" },
-        { text: "Take long to recover", element: "water" },
-      ]},
-      { text: "During an argument, you:", options: [
-        { text: "Speak directly and strongly", element: "wood" },
-        { text: "React emotionally", element: "fire" },
-        { text: "Try to calm things", element: "earth" },
-        { text: "Stay silent", element: "metal" },
-        { text: "Avoid it", element: "water" },
-      ]},
-      { text: "In a group, you are usually:", options: [
-        { text: "The one who leads", element: "wood" },
-        { text: "The one who talks and energizes", element: "fire" },
-        { text: "The one who supports others", element: "earth" },
-        { text: "The one who organizes things", element: "metal" },
-        { text: "The one who observes quietly", element: "water" },
-      ]},
-      { text: "When making decisions, you:", options: [
-        { text: "Decide quickly", element: "wood" },
-        { text: "Go with your feelings", element: "fire" },
-        { text: "Think carefully", element: "earth" },
-        { text: "Think logically", element: "metal" },
-        { text: "Take time and go deep", element: "water" },
-      ]},
-      { text: "Your way of talking is:", options: [
-        { text: "Straightforward", element: "wood" },
-        { text: "Friendly and expressive", element: "fire" },
-        { text: "Warm and caring", element: "earth" },
-        { text: "Clear and structured", element: "metal" },
-        { text: "Quiet and thoughtful", element: "water" },
-      ]},
-      { text: "Your work style is:", options: [
-        { text: "Fast and goal-focused", element: "wood" },
-        { text: "Energetic and passionate", element: "fire" },
-        { text: "Steady and dependable", element: "earth" },
-        { text: "Detail-focused", element: "metal" },
-        { text: "Deep and thoughtful", element: "water" },
-      ]},
-      { text: "You feel most comfortable in:", options: [
-        { text: "Windy weather", element: "wood" },
-        { text: "Warm or hot weather", element: "fire" },
-        { text: "Mild and comfortable weather", element: "earth" },
-        { text: "Cool and dry weather", element: "metal" },
-        { text: "Cold weather", element: "water" },
-      ]},
-      { text: "You mostly like food that is:", options: [
-        { text: "Fresh and slightly sour", element: "wood" },
-        { text: "Spicy or strong", element: "fire" },
-        { text: "Sweet and filling", element: "earth" },
-        { text: "Light and simple", element: "metal" },
-        { text: "Salty or rich", element: "water" },
-      ]},
-      { text: "Your sleep is:", options: [
-        { text: "Light and easily disturbed", element: "wood" },
-        { text: "Short but refreshing", element: "fire" },
-        { text: "Deep and steady", element: "earth" },
-        { text: "Regular and disciplined", element: "metal" },
-        { text: "Heavy and long", element: "water" },
-      ]},
-      { text: "Your daily routine is:", options: [
-        { text: "Not fixed, changes often", element: "wood" },
-        { text: "Fast and busy", element: "fire" },
-        { text: "Balanced and regular", element: "earth" },
-        { text: "Well planned", element: "metal" },
-        { text: "Slow and relaxed", element: "water" },
-      ]},
-      { text: "Your digestion is:", options: [
-        { text: "Irregular", element: "wood" },
-        { text: "Strong but sensitive", element: "fire" },
-        { text: "Slow but steady", element: "earth" },
-        { text: "Sensitive", element: "metal" },
-        { text: "Slow", element: "water" },
-      ]},
-      { text: "Your appetite is:", options: [
-        { text: "Sometimes high, sometimes low", element: "wood" },
-        { text: "Strong", element: "fire" },
-        { text: "Moderate", element: "earth" },
-        { text: "Low", element: "metal" },
-        { text: "Low most of the time", element: "water" },
-      ]},
-      { text: "You often feel:", options: [
-        { text: "Tightness in body", element: "wood" },
-        { text: "Heat or burning", element: "fire" },
-        { text: "Heaviness or bloating", element: "earth" },
-        { text: "Dryness or breathing issues", element: "metal" },
-        { text: "Coldness or back weakness", element: "water" },
-      ]},
-      { text: "Under pressure, you:", options: [
-        { text: "Push yourself more", element: "wood" },
-        { text: "Become restless", element: "fire" },
-        { text: "Look for comfort", element: "earth" },
-        { text: "Become strict or rigid", element: "metal" },
-        { text: "Withdraw", element: "water" },
-      ]},
-      { text: "What troubles you most?", options: [
-        { text: "Things not moving forward", element: "wood" },
-        { text: "Too much emotional drama", element: "fire" },
-        { text: "Lack of stability", element: "earth" },
-        { text: "Mess or disorder", element: "metal" },
-        { text: "Uncertainty", element: "water" },
-      ]},
-      { text: "What helps you feel better?", options: [
-        { text: "Activity and movement", element: "wood" },
-        { text: "Talking to people", element: "fire" },
-        { text: "Rest and comfort", element: "earth" },
-        { text: "Order and clarity", element: "metal" },
-        { text: "Silence and alone time", element: "water" },
-      ]},
-      { text: "You feel happiest when:", options: [
-        { text: "You are growing or achieving", element: "wood" },
-        { text: "You are expressing yourself", element: "fire" },
-        { text: "You are helping others", element: "earth" },
-        { text: "Things are organized", element: "metal" },
-        { text: "You are thinking deeply", element: "water" },
-      ]},
-      { text: "What matters most to you?", options: [
-        { text: "Growth", element: "wood" },
-        { text: "Joy", element: "fire" },
-        { text: "Stability", element: "earth" },
-        { text: "Perfection", element: "metal" },
-        { text: "Understanding", element: "water" },
-      ]},
-      { text: "People usually see you as:", options: [
-        { text: "Strong and determined", element: "wood" },
-        { text: "Cheerful and lively", element: "fire" },
-        { text: "Caring and reliable", element: "earth" },
-        { text: "Neat and precise", element: "metal" },
-        { text: "Deep and thoughtful", element: "water" },
-      ]}
+      {
+        text: "Most of the time, your body is:",
+        category: "body",
+        options: [
+          { text: "slim or lean", primary: "wood", secondary: "metal" },
+          { text: "medium and active", primary: "fire", secondary: "wood" },
+          { text: "slightly heavy or solid", primary: "earth", secondary: "water" },
+          { text: "thin but firm", primary: "metal", secondary: "wood" },
+          { text: "soft or tends to gain weight", primary: "water", secondary: "earth" }
+        ]
+      },
+      {
+        text: "Your body usually feels:",
+        category: "body",
+        options: [
+          { text: "light and restless", primary: "wood", secondary: "fire" },
+          { text: "warm or energetic", primary: "fire", secondary: "wood" },
+          { text: "comfortable and steady", primary: "earth", secondary: "metal" },
+          { text: "slightly cool", primary: "metal", secondary: "water" },
+          { text: "cold or slow", primary: "water", secondary: "earth" }
+        ]
+      },
+      {
+        text: "Your energy on most days is:",
+        category: "body",
+        options: [
+          { text: "up and down", primary: "wood", secondary: "fire" },
+          { text: "high and active", primary: "fire", secondary: "wood" },
+          { text: "steady and balanced", primary: "earth", secondary: "metal" },
+          { text: "calm and controlled", primary: "metal", secondary: "earth" },
+          { text: "low but deep", primary: "water", secondary: "metal" }
+        ]
+      },
+      {
+        text: "Your skin usually feels:",
+        category: "body",
+        options: [
+          { text: "dry or rough", primary: "wood", secondary: "metal" },
+          { text: "warm or sensitive", primary: "fire", secondary: "wood" },
+          { text: "soft and smooth", primary: "earth", secondary: "water" },
+          { text: "dry and delicate", primary: "metal", secondary: "water" },
+          { text: "cool and slightly oily", primary: "water", secondary: "earth" }
+        ]
+      },
+      {
+        text: "Your hunger is usually:",
+        category: "body",
+        options: [
+          { text: "irregular", primary: "wood", secondary: "fire" },
+          { text: "strong", primary: "fire", secondary: "wood" },
+          { text: "moderate", primary: "earth", secondary: "metal" },
+          { text: "low", primary: "metal", secondary: "water" },
+          { text: "low most of the time", primary: "water", secondary: "earth" }
+        ]
+      },
+      {
+        text: "Your digestion is mostly:",
+        category: "body",
+        options: [
+          { text: "unpredictable", primary: "wood", secondary: "fire" },
+          { text: "strong but sensitive", primary: "fire", secondary: "wood" },
+          { text: "slow but steady", primary: "earth", secondary: "water" },
+          { text: "sensitive", primary: "metal", secondary: "earth" },
+          { text: "slow", primary: "water", secondary: "earth" }
+        ]
+      },
+      {
+        text: "Your sleep is:",
+        category: "body",
+        options: [
+          { text: "light and easily disturbed", primary: "wood", secondary: "fire" },
+          { text: "short but refreshing", primary: "fire", secondary: "wood" },
+          { text: "deep and steady", primary: "earth", secondary: "water" },
+          { text: "regular and fixed", primary: "metal", secondary: "earth" },
+          { text: "heavy and long", primary: "water", secondary: "earth" }
+        ]
+      },
+      {
+        text: "Your body movement is:",
+        category: "body",
+        options: [
+          { text: "fast and active", primary: "wood", secondary: "fire" },
+          { text: "lively and expressive", primary: "fire", secondary: "wood" },
+          { text: "slow and steady", primary: "earth", secondary: "water" },
+          { text: "careful and controlled", primary: "metal", secondary: "earth" },
+          { text: "slow and relaxed", primary: "water", secondary: "earth" }
+        ]
+      },
+      {
+        text: "When you wake up, you feel:",
+        category: "body",
+        options: [
+          { text: "already active", primary: "wood", secondary: "fire" },
+          { text: "energetic", primary: "fire", secondary: "wood" },
+          { text: "normal", primary: "earth", secondary: "metal" },
+          { text: "quiet and calm", primary: "metal", secondary: "water" },
+          { text: "heavy or slow", primary: "water", secondary: "earth" }
+        ]
+      },
+      {
+        text: "Your body temperature feels:",
+        category: "body",
+        options: [
+          { text: "changing often", primary: "wood", secondary: "fire" },
+          { text: "warm or hot", primary: "fire", secondary: "wood" },
+          { text: "comfortable", primary: "earth", secondary: "metal" },
+          { text: "slightly cool", primary: "metal", secondary: "water" },
+          { text: "cold", primary: "water", secondary: "earth" }
+        ]
+      },
+
+      {
+        text: "When something annoys you, you usually:",
+        category: "mind",
+        options: [
+          { text: "get irritated quickly", primary: "wood", secondary: "fire" },
+          { text: "react strongly", primary: "fire", secondary: "wood" },
+          { text: "start worrying", primary: "earth", secondary: "metal" },
+          { text: "keep it inside", primary: "metal", secondary: "water" },
+          { text: "avoid it", primary: "water", secondary: "metal" }
+        ]
+      },
+      {
+        text: "The feeling you notice most often is:",
+        category: "mind",
+        options: [
+          { text: "irritation", primary: "wood", secondary: "fire" },
+          { text: "excitement", primary: "fire", secondary: "wood" },
+          { text: "worry", primary: "earth", secondary: "metal" },
+          { text: "sadness", primary: "metal", secondary: "water" },
+          { text: "fear", primary: "water", secondary: "metal" }
+        ]
+      },
+      {
+        text: "When you are upset:",
+        category: "mind",
+        options: [
+          { text: "you react quickly", primary: "wood", secondary: "fire" },
+          { text: "you express it openly", primary: "fire", secondary: "wood" },
+          { text: "you think about it a lot", primary: "earth", secondary: "metal" },
+          { text: "you keep it inside", primary: "metal", secondary: "water" },
+          { text: "you withdraw", primary: "water", secondary: "metal" }
+        ]
+      },
+      {
+        text: "After getting upset, you:",
+        category: "mind",
+        options: [
+          { text: "calm down fast", primary: "wood", secondary: "fire" },
+          { text: "express and move on", primary: "fire", secondary: "wood" },
+          { text: "take time to settle", primary: "earth", secondary: "water" },
+          { text: "stay quiet", primary: "metal", secondary: "water" },
+          { text: "take long to recover", primary: "water", secondary: "earth" }
+        ]
+      },
+      {
+        text: "In difficult situations, you:",
+        category: "mind",
+        options: [
+          { text: "push forward", primary: "wood", secondary: "fire" },
+          { text: "react emotionally", primary: "fire", secondary: "wood" },
+          { text: "try to manage things", primary: "earth", secondary: "metal" },
+          { text: "stay controlled", primary: "metal", secondary: "earth" },
+          { text: "step back", primary: "water", secondary: "metal" }
+        ]
+      },
+      {
+        text: "In a group, you are usually:",
+        category: "mind",
+        options: [
+          { text: "the leader", primary: "wood", secondary: "fire" },
+          { text: "the energetic one", primary: "fire", secondary: "wood" },
+          { text: "the supportive one", primary: "earth", secondary: "water" },
+          { text: "the organized one", primary: "metal", secondary: "earth" },
+          { text: "the quiet observer", primary: "water", secondary: "metal" }
+        ]
+      },
+      {
+        text: "When making decisions:",
+        category: "mind",
+        options: [
+          { text: "you decide quickly", primary: "wood", secondary: "fire" },
+          { text: "you follow your feelings", primary: "fire", secondary: "earth" },
+          { text: "you think carefully", primary: "earth", secondary: "metal" },
+          { text: "you think logically", primary: "metal", secondary: "earth" },
+          { text: "you take time", primary: "water", secondary: "metal" }
+        ]
+      },
+      {
+        text: "Your way of talking is:",
+        category: "mind",
+        options: [
+          { text: "direct", primary: "wood", secondary: "fire" },
+          { text: "expressive", primary: "fire", secondary: "wood" },
+          { text: "caring", primary: "earth", secondary: "water" },
+          { text: "clear", primary: "metal", secondary: "earth" },
+          { text: "quiet", primary: "water", secondary: "metal" }
+        ]
+      },
+      {
+        text: "Your thinking pattern is:",
+        category: "mind",
+        options: [
+          { text: "fast and active", primary: "wood", secondary: "fire" },
+          { text: "emotional", primary: "fire", secondary: "earth" },
+          { text: "steady", primary: "earth", secondary: "metal" },
+          { text: "precise", primary: "metal", secondary: "earth" },
+          { text: "deep", primary: "water", secondary: "metal" }
+        ]
+      },
+      {
+        text: "Your mind is usually:",
+        category: "mind",
+        options: [
+          { text: "active and restless", primary: "wood", secondary: "fire" },
+          { text: "excited", primary: "fire", secondary: "wood" },
+          { text: "calm", primary: "earth", secondary: "water" },
+          { text: "controlled", primary: "metal", secondary: "earth" },
+          { text: "quiet", primary: "water", secondary: "metal" }
+        ]
+      },
+
+      {
+        text: "Your daily routine is:",
+        category: "mind",
+        options: [
+          { text: "not fixed", primary: "wood", secondary: "fire" },
+          { text: "fast and busy", primary: "fire", secondary: "wood" },
+          { text: "balanced", primary: "earth", secondary: "metal" },
+          { text: "well planned", primary: "metal", secondary: "earth" },
+          { text: "slow", primary: "water", secondary: "earth" }
+        ]
+      },
+      {
+        text: "You feel comfortable when life is:",
+        category: "mind",
+        options: [
+          { text: "moving and changing", primary: "wood", secondary: "fire" },
+          { text: "exciting", primary: "fire", secondary: "wood" },
+          { text: "stable", primary: "earth", secondary: "water" },
+          { text: "organized", primary: "metal", secondary: "earth" },
+          { text: "calm", primary: "water", secondary: "metal" }
+        ]
+      },
+      {
+        text: "You prefer weather that is:",
+        category: "mind",
+        options: [
+          { text: "windy", primary: "wood", secondary: "fire" },
+          { text: "warm", primary: "fire", secondary: "earth" },
+          { text: "mild", primary: "earth", secondary: "metal" },
+          { text: "cool", primary: "metal", secondary: "water" },
+          { text: "cold", primary: "water", secondary: "metal" }
+        ]
+      },
+      {
+        text: "You usually like food that is:",
+        category: "mind",
+        options: [
+          { text: "fresh or sour", primary: "wood", secondary: "fire" },
+          { text: "spicy", primary: "fire", secondary: "wood" },
+          { text: "sweet", primary: "earth", secondary: "water" },
+          { text: "light", primary: "metal", secondary: "earth" },
+          { text: "rich or salty", primary: "water", secondary: "earth" }
+        ]
+      },
+      {
+        text: "Your work style is:",
+        category: "mind",
+        options: [
+          { text: "fast and driven", primary: "wood", secondary: "fire" },
+          { text: "energetic", primary: "fire", secondary: "wood" },
+          { text: "steady", primary: "earth", secondary: "metal" },
+          { text: "detailed", primary: "metal", secondary: "earth" },
+          { text: "thoughtful", primary: "water", secondary: "metal" }
+        ]
+      },
+      {
+        text: "You handle responsibilities by:",
+        category: "mind",
+        options: [
+          { text: "acting quickly", primary: "wood", secondary: "fire" },
+          { text: "reacting emotionally", primary: "fire", secondary: "earth" },
+          { text: "managing steadily", primary: "earth", secondary: "metal" },
+          { text: "organizing", primary: "metal", secondary: "earth" },
+          { text: "thinking deeply", primary: "water", secondary: "metal" }
+        ]
+      },
+      {
+        text: "Your pace of life is:",
+        category: "mind",
+        options: [
+          { text: "fast and changing", primary: "wood", secondary: "fire" },
+          { text: "fast and intense", primary: "fire", secondary: "wood" },
+          { text: "steady", primary: "earth", secondary: "metal" },
+          { text: "controlled", primary: "metal", secondary: "earth" },
+          { text: "slow", primary: "water", secondary: "earth" }
+        ]
+      },
+      {
+        text: "You feel best when:",
+        category: "mind",
+        options: [
+          { text: "you are moving forward", primary: "wood", secondary: "fire" },
+          { text: "you are enjoying", primary: "fire", secondary: "earth" },
+          { text: "you are stable", primary: "earth", secondary: "water" },
+          { text: "things are in order", primary: "metal", secondary: "earth" },
+          { text: "you are calm", primary: "water", secondary: "metal" }
+        ]
+      },
+      {
+        text: "You prefer:",
+        category: "mind",
+        options: [
+          { text: "action", primary: "wood", secondary: "fire" },
+          { text: "interaction", primary: "fire", secondary: "earth" },
+          { text: "comfort", primary: "earth", secondary: "water" },
+          { text: "structure", primary: "metal", secondary: "earth" },
+          { text: "silence", primary: "water", secondary: "metal" }
+        ]
+      },
+      {
+        text: "What gives you energy?",
+        category: "mind",
+        options: [
+          { text: "movement", primary: "wood", secondary: "fire" },
+          { text: "excitement", primary: "fire", secondary: "wood" },
+          { text: "stability", primary: "earth", secondary: "water" },
+          { text: "order", primary: "metal", secondary: "earth" },
+          { text: "rest", primary: "water", secondary: "earth" }
+        ]
+      },
+
+      {
+        text: "Under pressure, you:",
+        category: "stress",
+        options: [
+          { text: "push harder", primary: "wood", secondary: "fire" },
+          { text: "become restless", primary: "fire", secondary: "wood" },
+          { text: "worry", primary: "earth", secondary: "metal" },
+          { text: "become strict", primary: "metal", secondary: "earth" },
+          { text: "withdraw", primary: "water", secondary: "metal" }
+        ]
+      },
+      {
+        text: "When things don’t go as planned:",
+        category: "stress",
+        options: [
+          { text: "you get frustrated", primary: "wood", secondary: "fire" },
+          { text: "you react emotionally", primary: "fire", secondary: "wood" },
+          { text: "you worry", primary: "earth", secondary: "metal" },
+          { text: "you control more", primary: "metal", secondary: "earth" },
+          { text: "you step back", primary: "water", secondary: "metal" }
+        ]
+      },
+      {
+        text: "When overwhelmed, you:",
+        category: "stress",
+        options: [
+          { text: "become irritated", primary: "wood", secondary: "fire" },
+          { text: "feel overexcited", primary: "fire", secondary: "wood" },
+          { text: "feel heavy", primary: "earth", secondary: "water" },
+          { text: "feel tight", primary: "metal", secondary: "earth" },
+          { text: "feel low", primary: "water", secondary: "earth" }
+        ]
+      },
+      {
+        text: "In conflict, you:",
+        category: "stress",
+        options: [
+          { text: "confront", primary: "wood", secondary: "fire" },
+          { text: "react", primary: "fire", secondary: "wood" },
+          { text: "calm things", primary: "earth", secondary: "metal" },
+          { text: "stay quiet", primary: "metal", secondary: "water" },
+          { text: "avoid", primary: "water", secondary: "metal" }
+        ]
+      },
+      {
+        text: "When tired, you:",
+        category: "stress",
+        options: [
+          { text: "become restless", primary: "wood", secondary: "fire" },
+          { text: "become emotional", primary: "fire", secondary: "earth" },
+          { text: "feel heavy", primary: "earth", secondary: "water" },
+          { text: "feel tense", primary: "metal", secondary: "earth" },
+          { text: "feel drained", primary: "water", secondary: "metal" }
+        ]
+      },
+      {
+        text: "When stressed, your body feels:",
+        category: "stress",
+        options: [
+          { text: "tense", primary: "wood", secondary: "metal" },
+          { text: "hot", primary: "fire", secondary: "wood" },
+          { text: "heavy", primary: "earth", secondary: "water" },
+          { text: "tight", primary: "metal", secondary: "earth" },
+          { text: "cold", primary: "water", secondary: "metal" }
+        ]
+      },
+      {
+        text: "What affects you most?",
+        category: "stress",
+        options: [
+          { text: "delays", primary: "wood", secondary: "fire" },
+          { text: "emotional situations", primary: "fire", secondary: "earth" },
+          { text: "instability", primary: "earth", secondary: "water" },
+          { text: "disorder", primary: "metal", secondary: "earth" },
+          { text: "uncertainty", primary: "water", secondary: "metal" }
+        ]
+      },
+      {
+        text: "When stressed, you usually need:",
+        category: "stress",
+        options: [
+          { text: "movement", primary: "wood", secondary: "fire" },
+          { text: "connection", primary: "fire", secondary: "earth" },
+          { text: "comfort", primary: "earth", secondary: "water" },
+          { text: "clarity", primary: "metal", secondary: "earth" },
+          { text: "rest", primary: "water", secondary: "earth" }
+        ]
+      },
+      {
+        text: "What helps you recover best?",
+        category: "stress",
+        options: [
+          { text: "activity", primary: "wood", secondary: "fire" },
+          { text: "talking", primary: "fire", secondary: "earth" },
+          { text: "rest", primary: "earth", secondary: "water" },
+          { text: "order", primary: "metal", secondary: "earth" },
+          { text: "silence", primary: "water", secondary: "metal" }
+        ]
+      },
+      {
+        text: "When things become too much, you:",
+        category: "stress",
+        options: [
+          { text: "push through", primary: "wood", secondary: "fire" },
+          { text: "react strongly", primary: "fire", secondary: "wood" },
+          { text: "think too much", primary: "earth", secondary: "metal" },
+          { text: "hold tightly", primary: "metal", secondary: "earth" },
+          { text: "withdraw", primary: "water", secondary: "metal" }
+        ]
+      }
     ];
+
 
     const elementInfo = {
       wood: {
         title: "Wood",
         hover: "Growth, movement, direction, drive.",
-        about: "You may naturally be active, driven, forward-moving, and eager for progress. You often feel better when life has direction and momentum.",
-        emotion: "You may react through irritation, impatience, or frustration when things feel blocked or delayed.",
-        physical: "You may notice tension, restlessness, or an up-and-down energy pattern more easily than some others.",
-        strengths: ["Determined", "Action-oriented", "Motivated", "Good at moving things forward"],
-        challenges: ["Impatience", "Frustration when blocked", "Difficulty slowing down", "Pushing too hard"],
-        stress: "When stressed, you may become sharp, reactive, or feel a strong need to push through obstacles quickly.",
-        help: "Regular movement, space to breathe, flexible planning, and learning when to pause can help you a lot.",
-        weak: "When Wood is lower, you may need more initiative, motivation, or healthy movement in daily life."
+        about: "You may naturally move toward growth, progress, action, and getting things moving. Wood types often do best when life has direction and they feel they are moving forward instead of being blocked.",
+        emotion: "Emotionally, Wood often reacts first through irritation, pressure, impatience, or frustration when something feels blocked, delayed, or unfair. In its healthy form, this same energy becomes passion, leadership, and the power to protect or push for change.",
+        foodsEnjoy: [
+          "Warm rice meals with simple vegetable curries — they feel grounding without making you sluggish.",
+          "Lightly cooked vegetables such as beans, cabbage, ash gourd, snake gourd, and thoran-style dishes — they support movement without excess heaviness.",
+          "Moong dal / cherupayar and mildly spiced soups — they nourish while staying light.",
+          "Small amounts of buttermilk or lightly seasoned moru when it suits you — it can cool irritation and internal heat.",
+          "Fresh herbs like curry leaves, coriander, mint, and a little lemon — they keep food lively without too much heaviness."
+        ],
+        foodsReduce: [
+          "Very spicy food, too much green chilli, and heavily sour pickles — they may increase internal heat and irritability.",
+          "Frequent deep-fried snacks such as bajji, parippu vada, chips, and oily fast food — they can make your system feel more tense and burdened.",
+          "Long gaps between meals — they often worsen frustration, acidity, or a pushed feeling.",
+          "Too much coffee or stimulants — they may increase reactivity and make it harder to slow down."
+        ],
+        activitiesDo: [
+          "Regular walking, stretching, yoga, or mobility work — these give your strong inner drive a healthy outlet.",
+          "Keeping a sense of direction in life, with goals that are clear but not rigid — Wood usually feels better when moving toward something meaningful.",
+          "Time in open air and greenery — nature often softens Wood tension quickly.",
+          "Breathing practices and pauses between tasks — they help your energy flow instead of building pressure."
+        ],
+        activitiesAvoid: [
+          "Overworking without pauses — it can turn drive into tension.",
+          "Constant competition or argument — it may keep your system in a fight mode.",
+          "Irregular eating and sleeping — Wood tends to react badly when routine loses all rhythm.",
+          "Forcing everything to happen quickly — it increases inner pressure."
+        ],
+        tendencies: [
+          "Stress-related tension, muscle tightness, headaches, or neck-and-shoulder strain.",
+          "Irritability, impatience, or feeling blocked when life is not moving.",
+          "Digestive upset linked with pressure, irregular timing, or strong emotions.",
+          "Burnout from doing too much, pushing too hard, or not pausing."
+        ],
+        help: "What usually helps you most is movement with space: regular meals, room to breathe, some flexibility in plans, and enough rest so that your passion does not become pressure.",
+        shareLine: "Driven, forward-moving, and strongest when life has direction."
       },
       fire: {
         title: "Fire",
         hover: "Warmth, expression, joy, connection.",
-        about: "You may naturally be expressive, lively, emotionally bright, and easy to notice. You often bring warmth and energy into situations.",
-        emotion: "You may feel emotions strongly and show them openly. Excitement and restlessness may come quickly.",
-        physical: "You may feel warmth, sensitivity, or bursts of strong energy followed by a need to slow down.",
-        strengths: ["Charismatic", "Expressive", "Warm-hearted", "Able to energize others"],
-        challenges: ["Overexcitement", "Emotional ups and downs", "Difficulty settling", "Mental overstimulation"],
-        stress: "When stressed, you may become restless, emotionally overloaded, or feel scattered by too much stimulation.",
-        help: "Cooling routines, calm surroundings, deep rest, and meaningful but not excessive connection can help restore balance.",
-        weak: "When Fire is lower, you may need more joy, emotional warmth, social expression, or lightness in life."
+        about: "You may naturally bring warmth, expression, laughter, and emotional brightness into a space. Fire types often thrive when life feels meaningful, connected, and alive.",
+        emotion: "Emotionally, Fire often responds through excitement, enthusiasm, restlessness, or intense feeling. In its healthy form, this becomes warmth, love, charisma, and the ability to uplift others.",
+        foodsEnjoy: [
+          "Cooling and soothing foods such as kanji, cucumber, ash gourd, pumpkin, and lightly cooked vegetables — they calm excess heat.",
+          "Tender coconut water in moderation — it can help cool and refresh when Fire feels overheated.",
+          "Simple rice meals with balanced curries rather than overly strong flavors — they support steadier energy.",
+          "Mildly spiced dishes with coriander, jeera, and a little fennel — they keep digestion supported without overheating.",
+          "Fresh fruits that suit your digestion, especially watery and cooling ones — they can soften internal intensity."
+        ],
+        foodsReduce: [
+          "Very spicy curries, too much chilli, and repeated oily restaurant food — these may increase heat, acidity, and emotional restlessness.",
+          "Too much tea, coffee, or energy drinks — they can make Fire feel more scattered or overstimulated.",
+          "Alcohol and very late-night heavy meals — they often disturb both heart and sleep rhythm.",
+          "Too much fried meat or very rich celebratory food too often — it can tip Fire toward overload."
+        ],
+        activitiesDo: [
+          "Cooling routines, slower evenings, and enough quiet after social activity — Fire needs rest after brightness.",
+          "Gentle movement such as walking, easy dance, swimming if suitable, or relaxed yoga — these release energy without overheating.",
+          "Meaningful connection with the right people — Fire feels best with warmth, not constant noise.",
+          "Creative expression, music, journaling, or conversation — these help healthy emotional flow."
+        ],
+        activitiesAvoid: [
+          "Too much overstimulation, back-to-back social activity, and constant noise — Fire burns out quickly when there is no cooling space.",
+          "Late nights again and again — they may disturb both mind and heart.",
+          "Working in a rush all the time — it can turn warmth into agitation.",
+          "Excess screen stimulation before bed — it keeps the inner fire active."
+        ],
+        tendencies: [
+          "Acidity, heat, facial flushing, or sensitivity to too much spicy food.",
+          "Restlessness, emotional overload, or mental overstimulation.",
+          "Sleep disturbance when life becomes too exciting or too painful.",
+          "Burnout after giving out too much energy socially or emotionally."
+        ],
+        help: "What usually helps you most is calm warmth: enough affection, enough rest, cooling food, and a rhythm that lets joy stay alive without becoming excess.",
+        shareLine: "Expressive, warm-hearted, and brightest when life feels meaningful."
       },
       earth: {
         title: "Earth",
         hover: "Stability, care, support, nourishment.",
-        about: "You may naturally be supportive, dependable, grounding, and caring. You often value steadiness, comfort, and emotional security.",
-        emotion: "You may care deeply, worry easily, or carry other people's concerns inside your mind for too long.",
-        physical: "You may feel heaviness, bloating, slower energy, or a stronger need for regular nourishment and routine.",
-        strengths: ["Reliable", "Supportive", "Grounded", "Good at caring for others"],
-        challenges: ["Overthinking", "Mental heaviness", "Attachment", "Getting stuck in comfort"],
-        stress: "When stressed, you may worry, hold on, or seek comfort while feeling mentally and physically heavier.",
-        help: "Simple food habits, routine, light activity, and not carrying too much emotional weight can support you well.",
-        weak: "When Earth is lower, you may need more stability, nourishment, practical routine, or emotional grounding."
+        about: "You may naturally value steadiness, comfort, support, and emotional security. Earth types often become the people others lean on, and they usually do best when life feels grounded and dependable.",
+        emotion: "Emotionally, Earth often moves through concern, care, worry, and the wish to hold things together. In its healthy form, this becomes reliability, nourishment, sympathy, and deep support for others.",
+        foodsEnjoy: [
+          "Simple home-style meals such as rice with lightly spiced curries, vegetable stew, and balanced thoran — they nourish without confusion.",
+          "Moong dal, red rice in moderate quantity, and easy-to-digest Kerala meals — they support steady energy.",
+          "Warm cooked foods more often than cold food — they usually help Earth digestion feel settled.",
+          "Jeera, ginger in moderate quantity, pepper in balance, and digestive spices used gently — they support heaviness-prone digestion.",
+          "Smaller, regular meals rather than very large meals — they keep comfort without overload."
+        ],
+        foodsReduce: [
+          "Too many sweets, bakery items, payasam, and frequent dessert eating — these may add heaviness and sluggishness.",
+          "Overeating in the name of comfort — Earth can easily turn food into emotional soothing.",
+          "Very heavy dairy-rich, oily, or repeatedly rich festival-style meals — they may slow digestion and energy.",
+          "Eating again and again without real hunger — it can worsen bloating or lethargy."
+        ],
+        activitiesDo: [
+          "Regular routine, steady meal times, and gentle consistency — Earth usually feels best when rhythm is dependable.",
+          "Daily walking and enough body movement — it keeps comfort from becoming stagnation.",
+          "Simple grounding practices like gardening, light housework, or calm hands-on routines — these suit Earth energy well.",
+          "Learning to care for yourself as well as others — this is one of Earth's biggest balancing steps."
+        ],
+        activitiesAvoid: [
+          "Long sitting, inactivity, and comfort without movement — these may increase heaviness.",
+          "Taking on everybody's burden all the time — it creates emotional overload.",
+          "Very irregular eating or emotional eating — both can disturb Earth strongly.",
+          "Saying yes to everything and then feeling burdened — overgiving drains Earth."
+        ],
+        tendencies: [
+          "Sluggish digestion, bloating, heaviness, or post-meal sleepiness.",
+          "Weight gain or a tendency toward inertia when routine becomes too comfortable.",
+          "Worry, overthinking, or carrying other people's issues inside.",
+          "Feeling stuck when too much responsibility piles up."
+        ],
+        help: "What usually helps you most is gentle steadiness: warm digestible food, movement every day, clear limits with other people, and enough support so you do not have to carry everything alone.",
+        shareLine: "Grounded, dependable, and strongest when life feels steady and supported."
       },
       metal: {
         title: "Metal",
-        hover: "Clarity, order, discipline, refinement.",
-        about: "You may naturally be clear, thoughtful, disciplined, and organized. You often value neatness, structure, and meaningful order.",
-        emotion: "You may keep feelings inside, stay reserved, or struggle to release sadness, disappointment, or inner pressure.",
-        physical: "You may notice dryness, sensitivity, or a tendency to hold tension through control and tightness.",
-        strengths: ["Precise", "Disciplined", "Organized", "Strong sense of clarity"],
-        challenges: ["Rigidity", "Perfectionism", "Holding feelings in", "Being too self-controlled"],
-        stress: "When stressed, you may become overly strict, withdrawn, or uncomfortable when things feel messy or out of order.",
-        help: "Breathing space, softness, flexibility, and allowing imperfection can help you feel lighter and freer.",
-        weak: "When Metal is lower, you may need more structure, clarity, healthy boundaries, or a better sense of order."
+        hover: "Clarity, order, refinement, precision.",
+        about: "You may naturally value clarity, order, correctness, and refined structure. Metal types often notice details, seek quality, and feel better when life is clean, simple, and mentally organized.",
+        emotion: "Emotionally, Metal often moves through sadness, reserve, distance, or a private sense of loss. In its healthy form, this becomes dignity, discernment, compassion, and the ability to create order from confusion.",
+        foodsEnjoy: [
+          "Warm, moist foods such as soups, light kichadi-style meals, vegetable stew, and soft cooked rice-dal combinations — they reduce dryness.",
+          "Steamed or gently cooked vegetables rather than dry crunchy foods all the time — they support softness.",
+          "Sesame, a little ghee if it suits you, and moistening foods in moderation — they can reduce excessive dryness.",
+          "Pear, ash gourd soup, lightly cooked greens, and warm fluids — they often help Metal feel less dry and tight.",
+          "Simple, uncluttered meals — Metal generally feels best with clean food and clean combinations."
+        ],
+        foodsReduce: [
+          "Too much dry snack food such as biscuits, bakery rusks, packaged chips, or repeated roasted foods — they can increase dryness.",
+          "Cold refrigerated foods taken often — they may make digestion and chest energy feel tighter.",
+          "Overly processed food and too much eating outside — Metal usually dislikes feeling internally 'unclean.'",
+          "Skipping water and warm fluids — it can worsen dryness."
+        ],
+        activitiesDo: [
+          "Breathing practices, walking in clean air, and routines that make your environment feel clear — these are deeply balancing for Metal.",
+          "Keeping spaces neat but not obsessively rigid — enough order helps your mind relax.",
+          "Gentle stretching of the chest and shoulders — it supports a feeling of openness.",
+          "Learning to express feeling in safe ways instead of holding everything inside — this softens inner tightness."
+        ],
+        activitiesAvoid: [
+          "Perfectionism without rest — it turns clarity into harshness.",
+          "Holding on to every disappointment — Metal suffers when it cannot let go.",
+          "Too much emotional isolation — it can deepen quiet sadness.",
+          "Becoming overly rigid in food, routine, or standards — this may increase inner tightness."
+        ],
+        tendencies: [
+          "Dryness, sensitivity of skin or throat, or feeling physically tight.",
+          "Constipation or dryness-related discomfort when routine is poor.",
+          "Private sadness, emotional reserve, or difficulty letting go.",
+          "Overcritical thinking toward yourself or others."
+        ],
+        help: "What usually helps you most is warmth with softness: moist foods, warm fluids, clear spaces, deep breathing, and permission to relax your standards enough to breathe more freely.",
+        shareLine: "Clear, refined, and strongest when life feels simple and in order."
       },
       water: {
         title: "Water",
-        hover: "Depth, wisdom, quiet strength, reflection.",
-        about: "You may naturally be thoughtful, inward, deep, intuitive, and calm beneath the surface. You often value meaning and inner understanding.",
-        emotion: "You may feel fear, uncertainty, or the need to withdraw when life becomes too intense or demanding.",
-        physical: "You may feel colder, lower in energy, or better suited to slow, steady rhythms than fast, demanding ones.",
-        strengths: ["Deep thinker", "Observant", "Calm", "Quietly strong"],
-        challenges: ["Withdrawal", "Fearfulness", "Low motivation", "Keeping too much inside"],
-        stress: "When stressed, you may retreat, lose momentum, or feel safer staying hidden rather than pushing forward.",
-        help: "Warmth, rest, trust-building routines, and gentle confidence can help you feel stronger and more secure.",
-        weak: "When Water is lower, you may need more rest, inner quiet, confidence, or deeper support to feel steady."
+        hover: "Depth, wisdom, stillness, reserves.",
+        about: "You may naturally be deep, thoughtful, inward, and observant. Water types often seek truth below the surface and usually do best when they have enough space, time, and inner quiet.",
+        emotion: "Emotionally, Water often reacts first through uncertainty, caution, fear, or holding back until it feels safe. In its healthy form, this becomes wisdom, foresight, depth, and strong inner determination.",
+        foodsEnjoy: [
+          "Warm, gently spiced food such as kanji, pepper-jeera rasam-style broths, ginger soups, and warm rice meals — these help restore warmth.",
+          "Cooked foods more often than cold foods — Water usually prefers warmth once balance returns.",
+          "Black gram in suitable forms, sesame in moderation, small amounts of warming spices, and nourishing but digestible foods — they support reserve energy.",
+          "Warm herbal drinks, jeera water, ginger water if suitable, and good hydration with warmth — these help circulation and comfort.",
+          "Simple strengthening meals taken on time — Water often benefits from regular nourishment."
+        ],
+        foodsReduce: [
+          "Cold foods, iced drinks, and very chilled desserts — they may worsen slowness or coldness.",
+          "Excess heavy oily meals that leave you sleepy and dull — they can deepen inertia.",
+          "Too much salty packaged food — it may burden the system without truly nourishing it.",
+          "Skipping meals and then eating very heavily — this may drain your reserves more."
+        ],
+        activitiesDo: [
+          "Steady movement such as walking, sun exposure in the morning, and a little discipline in routine — they help Water not sink into inertia.",
+          "Warmth practices such as oiling, warm bathing, or protecting yourself from too much cold — these are often deeply supportive.",
+          "Time for reflection, prayer, journaling, or quiet study — Water regains itself in depth.",
+          "Doing one thing with commitment rather than drifting too much — it strengthens your natural determination."
+        ],
+        activitiesAvoid: [
+          "Too much isolation for too long — Water needs solitude, but not disappearance.",
+          "Cold exposure, irregular sleep, and a very inactive lifestyle — these can weaken Water further.",
+          "Living only in your head without enough action — it may increase uncertainty.",
+          "Avoiding every challenge out of fear — Water grows stronger through wise courage."
+        ],
+        tendencies: [
+          "Low energy, coldness, slowed motivation, or feeling drained.",
+          "Fear, uncertainty, overcaution, or retreating too much under pressure.",
+          "Fluid retention or a heavy slow feeling when routine is poor.",
+          "Difficulty starting when too many possibilities remain open."
+        ],
+        help: "What usually helps you most is warm steadiness: warmth in food, warmth in daily rhythm, gentle discipline, enough rest, and the confidence that comes from taking one clear step at a time.",
+        shareLine: "Deep, thoughtful, and strongest when life allows quiet strength."
       }
     };
 
@@ -1067,27 +1871,49 @@
 
     const resultTitle = document.getElementById('resultTitle');
     const resultSubtitle = document.getElementById('resultSubtitle');
-    const dominantElement = document.getElementById('dominantElement');
-    const secondaryElement = document.getElementById('secondaryElement');
-    const lowestElement = document.getElementById('lowestElement');
+    const coreConstitution = document.getElementById('coreConstitution');
+    const bodyPatternBadge = document.getElementById('bodyPattern');
+    const mindPatternBadge = document.getElementById('mindPattern');
+    const stressPatternBadge = document.getElementById('stressPatternBadge');
 
-const aboutYou = document.getElementById('aboutYou');
+    const aboutYou = document.getElementById('aboutYou');
     const emotionalPattern = document.getElementById('emotionalPattern');
-    const physicalTendency = document.getElementById('physicalTendency');
-    const supportiveNote = document.getElementById('supportiveNote');
-    const strengthsList = document.getElementById('strengthsList');
-    const challengesList = document.getElementById('challengesList');
-    const stressPattern = document.getElementById('stressPattern');
-    const weakElementNote = document.getElementById('weakElementNote');
+    const foodsEnjoyList = document.getElementById('foodsEnjoyList');
+    const foodsReduceList = document.getElementById('foodsReduceList');
+    const activitiesDoList = document.getElementById('activitiesDoList');
+    const activitiesAvoidList = document.getElementById('activitiesAvoidList');
+    const tendenciesList = document.getElementById('tendenciesList');
+    const balanceHelp = document.getElementById('balanceHelp');
     const scoreBars = document.getElementById('scoreBars');
     const insightStrip = document.getElementById('insightStrip');
     const hoverNote = document.getElementById('hoverNote');
     const saveStatus = document.getElementById('saveStatus');
+    const resultStoryIntro = document.getElementById('resultStoryIntro');
+    const dominanceFill = document.getElementById('dominanceFill');
+    const dominanceMeta = document.getElementById('dominanceMeta');
+    const strongestElementCard = document.getElementById('strongestElementCard');
+    const secondElementCard = document.getElementById('secondElementCard');
+    const bodyPatternCard = document.getElementById('bodyPatternCard');
+    const stressPatternCard = document.getElementById('stressPatternCard');
+    const dominanceGrid = document.getElementById('dominanceGrid');
+    const shareCoreBadge = document.getElementById('shareCoreBadge');
+    const shareCoreValue = document.getElementById('shareCoreValue');
+    const shareBodyValue = document.getElementById('shareBodyValue');
+    const shareMindValue = document.getElementById('shareMindValue');
+    const shareStressValue = document.getElementById('shareStressValue');
+    const shareQuote = document.getElementById('shareQuote');
+    const downloadPdfBtn = document.getElementById('downloadPdfBtn');
+    const downloadStatus = document.getElementById('downloadStatus');
+    const chartExplainText = document.getElementById('chartExplainText');
+
 
     let currentQuestion = 0;
     let answers = Array(questions.length).fill(null);
     let userDetails = null;
     let radarChart = null;
+    let bodyChart = null;
+    let mindChart = null;
+    let stressChart = null;
 
     function showScreen(name) {
       Object.values(screens).forEach(screen => screen.classList.remove('active'));
@@ -1125,38 +1951,110 @@ const aboutYou = document.getElementById('aboutYou');
       nextBtn.textContent = currentQuestion === questions.length - 1 ? 'See Result' : 'Next';
     }
 
+    
+    function addScore(bucket, element, points) {
+      if (element) bucket[element] += points;
+    }
+
     function calculateScores() {
-      const scores = { wood: 0, fire: 0, earth: 0, metal: 0, water: 0 };
+      const coreScores = { wood: 0, fire: 0, earth: 0, metal: 0, water: 0 };
+      const bodyScores = { wood: 0, fire: 0, earth: 0, metal: 0, water: 0 };
+      const mindScores = { wood: 0, fire: 0, earth: 0, metal: 0, water: 0 };
+      const stressScores = { wood: 0, fire: 0, earth: 0, metal: 0, water: 0 };
+
       answers.forEach((answerIndex, qIndex) => {
-        const chosen = questions[qIndex].options[answerIndex];
-        if (chosen) scores[chosen.element] += 3;
+        const q = questions[qIndex];
+        const chosen = q?.options?.[answerIndex];
+        if (!chosen) return;
+
+        if (q.category === "body") {
+          addScore(coreScores, chosen.primary, 3);
+          addScore(coreScores, chosen.secondary, 1);
+          addScore(bodyScores, chosen.primary, 4);
+          addScore(bodyScores, chosen.secondary, 1);
+        }
+
+        if (q.category === "mind") {
+          addScore(coreScores, chosen.primary, 3);
+          addScore(coreScores, chosen.secondary, 1);
+          addScore(mindScores, chosen.primary, 4);
+          addScore(mindScores, chosen.secondary, 1);
+        }
+
+        if (q.category === "stress") {
+          addScore(coreScores, chosen.primary, 2);
+          addScore(coreScores, chosen.secondary, 1);
+          addScore(stressScores, chosen.primary, 5);
+          addScore(stressScores, chosen.secondary, 1);
+        }
       });
-      return scores;
+
+      return { coreScores, bodyScores, mindScores, stressScores };
     }
 
     function getSortedElements(scores) {
       return Object.entries(scores).sort((a, b) => b[1] - a[1]).map(entry => entry[0]);
     }
 
-    function setList(el, items) {
+
+    
+function setList(el, items) {
       el.innerHTML = items.map(item => `<li>${item}</li>`).join('');
     }
 
+    function pickBlend(primaryItems, secondaryItems, primaryCount = 3, secondaryCount = 2) {
+      return [
+        ...primaryItems.slice(0, primaryCount),
+        ...secondaryItems.slice(0, secondaryCount)
+      ];
+    }
+
+    function naturalStyleLine(primaryKey, secondaryKey) {
+      const lines = {
+        wood: "likes direction, progress, and a sense that life is moving",
+        fire: "likes warmth, expression, and meaningful connection",
+        earth: "likes steadiness, comfort, and dependable rhythm",
+        metal: "likes clarity, quality, and a sense of order",
+        water: "likes depth, quiet, and time to think before acting"
+      };
+      return `Your natural style seems to blend someone who ${lines[primaryKey]} with someone who ${lines[secondaryKey]}.`;
+    }
+
+    function lifeGetsHardLine(stressKey, mindKey) {
+      const lines = {
+        wood: "push harder, feel blocked, or become more reactive",
+        fire: "become emotionally restless, overstimulated, or scattered",
+        earth: "worry more, carry extra burden, or seek comfort",
+        metal: "go quiet, tighten up, or become more critical",
+        water: "withdraw, hesitate, or feel more uncertain than usual"
+      };
+      return `When life gets hard, you may first ${lines[stressKey]}.`;
+    }
+
+    
     function renderHoverPills() {
       insightStrip.innerHTML = '';
+      const defaultText = 'Tap or click an element name to see a short insight here.';
+      hoverNote.textContent = defaultText;
+
       ['wood', 'fire', 'earth', 'metal', 'water'].forEach(key => {
-        const pill = document.createElement('div');
+        const pill = document.createElement('button');
+        pill.type = 'button';
         pill.className = 'insight-pill';
         pill.textContent = elementInfo[key].title;
-        pill.addEventListener('mouseenter', () => {
+
+        const activate = () => {
+          document.querySelectorAll('.insight-pill').forEach(el => el.classList.remove('active'));
+          pill.classList.add('active');
           hoverNote.textContent = `${elementInfo[key].title}: ${elementInfo[key].hover}`;
-        });
-        pill.addEventListener('mouseleave', () => {
-          hoverNote.textContent = 'Hover over an element name to see a short insight here.';
-        });
+        };
+
+        pill.addEventListener('click', activate);
+        pill.addEventListener('touchstart', activate, { passive: true });
         insightStrip.appendChild(pill);
       });
     }
+
 
     function renderRadar(scores) {
       const canvas = document.getElementById('radarChart');
@@ -1200,66 +2098,276 @@ const aboutYou = document.getElementById('aboutYou');
       });
     }
 
-    function renderResults(scores) {
-      const sorted = getSortedElements(scores);
-      const [primary, secondary, , , lowest] = sorted;
-      const total = Object.values(scores).reduce((sum, val) => sum + val, 0) || 1;
+    
+    
+    
+    const elementIcons = {
+      wood: '🌿',
+      fire: '🔥',
+      earth: '⛰️',
+      metal: '⚪',
+      water: '💧'
+    };
 
-      const primaryData = elementInfo[primary];
-      const secondaryData = elementInfo[secondary];
-      const lowestData = elementInfo[lowest];
+    function withIcon(key, text) {
+      return `<span class="icon-badge">${elementIcons[key] || '✦'}</span>${text}`;
+    }
+
+    function animateCounter(el, target) {
+      if (!el) return;
+      const duration = 900;
+      const startTime = performance.now();
+
+      function tick(now) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(target * eased);
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    function getElementPercentages(scores) {
+      const total = Object.values(scores).reduce((sum, val) => sum + val, 0) || 1;
+      return ['wood','fire','earth','metal','water'].map(key => ({
+        key,
+        title: elementInfo[key].title,
+        score: scores[key],
+        percent: Math.round((scores[key] / total) * 100)
+      }));
+    }
+
+    
+    function renderMiniDoughnut(canvasId, scores, label) {
+      const canvas = document.getElementById(canvasId);
+      const values = ['wood', 'fire', 'earth', 'metal', 'water'].map(key => scores[key]);
+      const colors = ['#5f9f6a', '#d96557', '#c7a15c', '#aeb7c4', '#5378b7'];
+
+      const chart = new Chart(canvas, {
+        type: 'doughnut',
+        data: {
+          labels: ['Wood', 'Fire', 'Earth', 'Metal', 'Water'],
+          datasets: [{
+            data: values,
+            backgroundColor: colors,
+            borderColor: 'rgba(15,23,42,0.85)',
+            borderWidth: 3,
+            hoverOffset: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: { duration: 1000 },
+          cutout: '62%',
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return `${context.label}: ${context.raw}`;
+                }
+              }
+            }
+          },
+          onClick: function(evt, activeEls) {
+            const sorted = Object.entries(scores).sort((a,b) => b[1]-a[1]);
+            const top = sorted[0][0];
+            const second = sorted[1][0];
+            const map = {
+              bodyChart: `Your physical side appears to show more of ${elementInfo[top].title}, with ${elementInfo[second].title} also present. This does not mean disease. It only means these qualities are showing more in your body tendency.`,
+              mindChart: `Your emotional side appears to show more of ${elementInfo[top].title}, with ${elementInfo[second].title} also present. This means these qualities may be more active in your emotional nature.`,
+              stressChart: `When life becomes difficult, ${elementInfo[top].title} seems to come up first, with some ${elementInfo[second].title} influence too.`
+            };
+            if (chartExplainText) chartExplainText.textContent = map[canvasId] || 'This chart shows how the five elements are distributed.';
+          }
+        }
+      });
+
+      canvas.style.cursor = 'pointer';
+      canvas.addEventListener('touchstart', function() {
+        const sorted = Object.entries(scores).sort((a,b) => b[1]-a[1]);
+        const top = sorted[0][0];
+        const second = sorted[1][0];
+        const map = {
+          bodyChart: `Your physical side appears to show more of ${elementInfo[top].title}, with ${elementInfo[second].title} also present. This does not mean disease. It only means these qualities are showing more in your body tendency.`,
+          mindChart: `Your emotional side appears to show more of ${elementInfo[top].title}, with ${elementInfo[second].title} also present. This means these qualities may be more active in your emotional nature.`,
+          stressChart: `When life becomes difficult, ${elementInfo[top].title} seems to come up first, with some ${elementInfo[second].title} influence too.`
+        };
+        if (chartExplainText) chartExplainText.textContent = map[canvasId] || 'This chart shows how the five elements are distributed.';
+      }, { passive: true });
+
+      if (canvasId === 'bodyChart') {
+        if (bodyChart) bodyChart.destroy();
+        bodyChart = chart;
+      } else if (canvasId === 'mindChart') {
+        if (mindChart) mindChart.destroy();
+        mindChart = chart;
+      } else if (canvasId === 'stressChart') {
+        if (stressChart) stressChart.destroy();
+        stressChart = chart;
+      }
+    }
+
+
+
+    
+    
+function renderResults(resultData) {
+      const { coreScores, bodyScores, mindScores, stressScores } = resultData;
+      const coreOrder = getSortedElements(coreScores);
+      const bodyOrder = getSortedElements(bodyScores);
+      const mindOrder = getSortedElements(mindScores);
+      const stressOrder = getSortedElements(stressScores);
+
+      const corePrimary = coreOrder[0];
+      const coreSecondary = coreOrder[1];
+      const bodyPrimary = bodyOrder[0];
+      const mindPrimary = mindOrder[0];
+      const mindSecondary = mindOrder[1];
+      const stressPrimary = stressOrder[0];
+
+      const primaryData = elementInfo[corePrimary];
+      const secondaryData = elementInfo[coreSecondary];
+      const mindPrimaryData = elementInfo[mindPrimary];
+      const mindSecondaryData = elementInfo[mindSecondary];
+      const stressData = elementInfo[stressPrimary];
+
+      const total = Object.values(coreScores).reduce((sum, val) => sum + val, 0) || 1;
+      const corePercentages = ['wood','fire','earth','metal','water'].map(key => ({
+        key,
+        title: elementInfo[key].title,
+        score: coreScores[key],
+        percent: Math.round((coreScores[key] / total) * 100)
+      }));
+      const sortedPercentages = [...corePercentages].sort((a,b) => b.score - a.score);
+
+      const topGapRaw = coreScores[corePrimary] - coreScores[coreSecondary];
+      const topGapPct = Math.max(12, Math.min(100, Math.round((topGapRaw / (coreScores[corePrimary] || 1)) * 100 * 2.2)));
 
       resultTitle.textContent = `${primaryData.title}–${secondaryData.title}`;
-      resultSubtitle.textContent = `Your pattern shows ${primaryData.title} as the strongest influence, with ${secondaryData.title} close behind.`;
-      dominantElement.textContent = primaryData.title;
-      secondaryElement.textContent = secondaryData.title;
-      lowestElement.textContent = lowestData.title;
+      resultSubtitle.textContent = `Your main constitution appears to be ${primaryData.title} with strong ${secondaryData.title} support.`;
 
-      aboutYou.textContent = `${primaryData.about} ${secondaryData.title !== primaryData.title ? `There is also a clear ${secondaryData.title.toLowerCase()} influence, which may add some of its qualities to your overall pattern.` : ''}`;
-      emotionalPattern.textContent = `${primaryData.emotion} A secondary ${secondaryData.title.toLowerCase()} influence may also shape how you respond in relationships and under pressure.`;
-      physicalTendency.textContent = `${primaryData.physical} With ${secondaryData.title.toLowerCase()} also present, your body pattern may show a blend rather than only one pure type.`;
-      supportiveNote.textContent = primaryData.help;
-      stressPattern.textContent = primaryData.stress;
-      weakElementNote.textContent = lowestData.weak;
+      coreConstitution.textContent = `Main: ${primaryData.title}–${secondaryData.title}`;
+      bodyPattern.textContent = `Second element: ${secondaryData.title}`;
+      mindPattern.textContent = `Emotional side: ${mindPrimaryData.title}–${mindSecondaryData.title}`;
+      stressPatternBadge.textContent = `When life gets hard: ${stressData.title}`;
 
-      setList(strengthsList, primaryData.strengths);
-      setList(challengesList, primaryData.challenges);
+      strongestElementCard.innerHTML = withIcon(corePrimary, primaryData.title);
+      secondElementCard.innerHTML = withIcon(coreSecondary, secondaryData.title);
+      bodyPatternCard.innerHTML = withIcon(mindPrimary, mindPrimaryData.title);
+      stressPatternCard.innerHTML = withIcon(stressPrimary, stressData.title);
+
+      resultStoryIntro.textContent = `Your main pattern is ${primaryData.title}, with ${secondaryData.title} also showing clearly. This means both of these elements are important in your overall constitution.`;
+
+      dominanceMeta.textContent = `${primaryData.title} leads over ${secondaryData.title} by ${topGapRaw} points`;
+      dominanceFill.style.width = `${topGapPct}%`;
+
+      aboutYou.textContent = `${primaryData.about} A strong ${secondaryData.title.toLowerCase()} influence is also visible in your result.`;
+      emotionalPattern.textContent = `${primaryData.emotion} This result also suggests that your emotional side is influenced by ${mindPrimaryData.title.toLowerCase()} and ${mindSecondaryData.title.toLowerCase()} qualities.`;
+      balanceHelp.textContent = `${primaryData.help} Your ${secondaryData.title.toLowerCase()} side also matters, so balance usually comes from following a suitable rhythm, food pattern, and lifestyle.`;
+
+      setList(foodsEnjoyList, pickBlend(primaryData.foodsEnjoy, secondaryData.foodsEnjoy, 3, 2));
+      setList(foodsReduceList, pickBlend(primaryData.foodsReduce, secondaryData.foodsReduce, 3, 1));
+      setList(activitiesDoList, pickBlend(primaryData.activitiesDo, secondaryData.activitiesDo, 3, 1));
+      setList(activitiesAvoidList, pickBlend(primaryData.activitiesAvoid, secondaryData.activitiesAvoid, 3, 1));
+      setList(tendenciesList, pickBlend(primaryData.tendencies, secondaryData.tendencies, 3, 1));
+
+      shareCoreBadge.textContent = `Core: ${primaryData.title}–${secondaryData.title}`;
+      shareCoreValue.textContent = `${primaryData.title}–${secondaryData.title}`;
+      shareBodyValue.textContent = mindPrimaryData.title;
+      shareMindValue.textContent = `${mindPrimaryData.title}–${mindSecondaryData.title}`;
+      shareStressValue.textContent = stressData.title;
+      shareQuote.textContent = `${primaryData.shareLine} Supported by ${secondaryData.title.toLowerCase()} qualities, this result suggests that you do best with the right food, rhythm, and lifestyle.`;
 
       scoreBars.innerHTML = '';
-      ['wood', 'fire', 'earth', 'metal', 'water'].forEach(key => {
-        const pct = Math.round((scores[key] / total) * 100);
+      dominanceGrid.innerHTML = '';
+
+      corePercentages.forEach((item) => {
         const row = document.createElement('div');
         row.className = 'score-line';
         row.innerHTML = `
-          <div class="score-label">${elementInfo[key].title}</div>
-          <div class="bar ${key}"><div style="width:${pct}%"></div></div>
-          <div>${pct}%</div>
+          <div class="score-label">${item.title}</div>
+          <div class="bar ${item.key}"><div style="width:${item.percent}%"></div></div>
+          <div>${item.percent}%</div>
         `;
         scoreBars.appendChild(row);
       });
 
+      sortedPercentages.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'dominance-card';
+        card.innerHTML = `
+          <div class="element-name">${item.title}</div>
+          <div class="element-score">${item.score}</div>
+          <span class="dominance-rank">Rank #${index + 1}</span>
+        `;
+        dominanceGrid.appendChild(card);
+      });
+
+      const woodPct = corePercentages.find(x => x.key === 'wood')?.percent || 0;
+      const firePct = corePercentages.find(x => x.key === 'fire')?.percent || 0;
+      const earthPct = corePercentages.find(x => x.key === 'earth')?.percent || 0;
+      const metalPct = corePercentages.find(x => x.key === 'metal')?.percent || 0;
+      const waterPct = corePercentages.find(x => x.key === 'water')?.percent || 0;
+
+      document.getElementById('counterWood').textContent = '0';
+      document.getElementById('counterFire').textContent = '0';
+      document.getElementById('counterEarth').textContent = '0';
+      document.getElementById('counterMetal').textContent = '0';
+      document.getElementById('counterWater').textContent = '0';
+
+      animateCounter(document.getElementById('counterWood'), woodPct);
+      animateCounter(document.getElementById('counterFire'), firePct);
+      animateCounter(document.getElementById('counterEarth'), earthPct);
+      animateCounter(document.getElementById('counterMetal'), metalPct);
+      animateCounter(document.getElementById('counterWater'), waterPct);
+
+      document.querySelectorAll('.dominance-card .element-score').forEach((el, index) => {
+        const item = sortedPercentages[index];
+        if (item) {
+          el.textContent = '0';
+          animateCounter(el, item.score);
+        }
+      });
+
+      if (chartExplainText) chartExplainText.textContent = 'Tap or click any of the three small charts above to read a simple explanation here.';
       renderHoverPills();
-      renderRadar(scores);
+      renderRadar(coreScores);
+      renderMiniDoughnut('bodyChart', bodyScores, 'Body Tendency');
+      renderMiniDoughnut('mindChart', mindScores, 'Emotional Tendency');
+      renderMiniDoughnut('stressChart', stressScores, 'Reaction Under Pressure');
     }
 
-    async function saveSubmission(scores) {
+    
+
+
+    
+    async function saveSubmission(resultData) {
       if (!userDetails) return;
 
-      const sorted = getSortedElements(scores);
-      const [primary, secondary] = sorted;
+      const { coreScores, bodyScores, mindScores, stressScores } = resultData;
+      const coreOrder = getSortedElements(coreScores);
+      const bodyOrder = getSortedElements(bodyScores);
+      const mindOrder = getSortedElements(mindScores);
+      const stressOrder = getSortedElements(stressScores);
+
       const payload = {
         timestamp: new Date().toISOString(),
         name: userDetails.name,
         age: userDetails.age,
         place: userDetails.place,
         email: userDetails.email,
-        wood: scores.wood,
-        fire: scores.fire,
-        earth: scores.earth,
-        metal: scores.metal,
-        water: scores.water,
-        primary: elementInfo[primary].title,
-        secondary: elementInfo[secondary].title,
+        wood: coreScores.wood,
+        fire: coreScores.fire,
+        earth: coreScores.earth,
+        metal: coreScores.metal,
+        water: coreScores.water,
+        primary: elementInfo[coreOrder[0]].title,
+        secondary: elementInfo[coreOrder[1]].title,
+        bodyPattern: elementInfo[bodyOrder[0]].title,
+        mindPattern: `${elementInfo[mindOrder[0]].title}-${elementInfo[mindOrder[1]].title}`,
+        stressPattern: elementInfo[stressOrder[0]].title
       };
 
       if (!APPS_SCRIPT_URL) {
@@ -1281,6 +2389,7 @@ const aboutYou = document.getElementById('aboutYou');
         saveStatus.textContent = 'Result shown successfully, but saving to Google Sheets could not be completed right now.';
       }
     }
+
 
     startBtn.addEventListener('click', () => showScreen('details'));
     backHomeBtn.addEventListener('click', () => showScreen('home'));
@@ -1319,10 +2428,40 @@ const aboutYou = document.getElementById('aboutYou');
         return;
       }
 
-      const scores = calculateScores();
-      renderResults(scores);
+      const resultData = calculateScores();
+      renderResults(resultData);
       showScreen('result');
-      await saveSubmission(scores);
+      await saveSubmission(resultData);
+    });
+
+
+    downloadPdfBtn.addEventListener('click', async () => {
+      const shareCard = document.getElementById('shareCard');
+      if (!shareCard) return;
+
+      try {
+        downloadStatus.textContent = 'Preparing PDF...';
+        const canvas = await html2canvas(shareCard, {
+          backgroundColor: '#1f2937',
+          scale: 2,
+          useCORS: true
+        });
+
+        const imgData = canvas.toDataURL('image/png');
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF({
+          orientation: canvas.width > canvas.height ? 'landscape' : 'portrait',
+          unit: 'px',
+          format: [canvas.width, canvas.height]
+        });
+
+        pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+        pdf.save('five-element-result-card.pdf');
+        downloadStatus.textContent = 'PDF downloaded successfully.';
+      } catch (error) {
+        console.error(error);
+        downloadStatus.textContent = 'Could not create PDF on this device right now.';
+      }
     });
 
     restartBtn.addEventListener('click', () => {
@@ -1335,6 +2474,9 @@ const aboutYou = document.getElementById('aboutYou');
         radarChart.destroy();
         radarChart = null;
       }
+      if (bodyChart) { bodyChart.destroy(); bodyChart = null; }
+      if (mindChart) { mindChart.destroy(); mindChart = null; }
+      if (stressChart) { stressChart.destroy(); stressChart = null; }
       showScreen('home');
     });
   </script>
